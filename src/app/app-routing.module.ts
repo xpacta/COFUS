@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'form-jt',
     loadChildren: () => import('./form-jt/form-jt.module').then( m => m.FormJtPageModule)
   },
+  {
+    path: 'form-mec',
+    loadChildren: () => import('./form-mec/form-mec.module').then( m => m.FormMecPageModule)
+  },
 
 ];
 
