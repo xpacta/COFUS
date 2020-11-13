@@ -10,7 +10,23 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+  },  {
+    path: 'form-gm',
+    loadChildren: () => import('./form-gm/form-gm.module').then( m => m.FormGmPageModule)
   },
+  {
+    path: 'form-rescate',
+    loadChildren: () => import('./form-rescate/form-rescate.module').then( m => m.FormRescatePageModule)
+  },
+  {
+    path: 'rescate-resol',
+    loadChildren: () => import('./rescate-resol/rescate-resol.module').then( m => m.RescateResolPageModule)
+  },
+  {
+    path: 'rescate-info',
+    loadChildren: () => import('./rescate-info/rescate-info.module').then( m => m.RescateInfoPageModule)
+  },
+
 ];
 
 @NgModule({

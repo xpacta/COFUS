@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gerente de mantenimiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Fecha y hora</ion-label>
+    <ion-datetime displayFormat="D MMM YYYY HH:mm" min="1997" max="2010" value="2020-12-11T11:06Z" [dayShortNames]="customDayShortNames" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+</ion-item>
+<br><br><br>
+
+<ion-item>
+    <ion-label>Lugar de atención</ion-label>
+    <ion-select placeholder="Seleccione">
+      <ion-select-option value="Taller">Taller</ion-select-option>
+      <ion-select-option value="Encierro">Encierro</ion-select-option>
+      <ion-select-option value="TallerEx">Taller externo</ion-select-option>
+      <ion-select-option value="Otro">Rescate</ion-select-option>
+    </ion-select>
+</ion-item>
+
+<br><br><br><br><br><br>
+<ion-segment (ionChange)="segmentChanged($event)" value="rescate">
+  <ion-segment-button value="taller">
+    <ion-label>Taller</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="rescate">
+    <ion-label>Rescate</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<br><br><br><br><br><br><br><br>
+<ion-button shape="round" color="primary" expand="block" routerLink="/rescate-info">Aceptar</ion-button>
+  
+</ion-content>
