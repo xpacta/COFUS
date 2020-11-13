@@ -9,7 +9,29 @@
     <ion-label>Fecha y hora</ion-label>
     <ion-datetime displayFormat="D MMM YYYY HH:mm" min="1997" max="2010" value="2020-12-11T11:06Z" [dayShortNames]="customDayShortNames" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
 </ion-item>
-<br><br><br>
+<ion-list>
+  <ion-item>
+    <ion-label>ID</ion-label>
+    <ion-input disabled value="Id"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Eco-Tij</ion-label>
+    <ion-input disabled value="Eco-Tij"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fallas</ion-label>
+    <ion-textarea rows="3" cols="20" disabled></ion-textarea>
+  </ion-item>
+  <ion-item>
+    <ion-label>Criticidad</ion-label>
+    <ion-input disabled value="Criticidad"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Ubicación</ion-label>
+    <ion-textarea rows="2" cols="20" disabled value=""></ion-textarea>
+  </ion-item>
+  
+</ion-list>
 
 <ion-item>
     <ion-label>Lugar de atención</ion-label>
@@ -21,7 +43,7 @@
     </ion-select>
 </ion-item>
 
-<br><br><br><br><br><br>
+<br><br>
 <ion-segment (ionChange)="segmentChanged($event)" value="rescate">
   <ion-segment-button value="taller">
     <ion-label>Taller</ion-label>
@@ -30,7 +52,7 @@
     <ion-label>Rescate</ion-label>
   </ion-segment-button>
 </ion-segment>
-<br><br><br><br><br><br><br><br>
+<br><br>
 <ion-button shape="round" color="primary" expand="block" routerLink="/rescate-info">Aceptar</ion-button>
   
 </ion-content>

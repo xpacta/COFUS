@@ -26,6 +26,14 @@ const routes: Routes = [
     path: 'rescate-info',
     loadChildren: () => import('./rescate-info/rescate-info.module').then( m => m.RescateInfoPageModule)
   },
+  {
+    path: 'rescate-noresol',
+    loadChildren: () => import('./rescate-noresol/rescate-noresol.module').then( m => m.RescateNoresolPageModule)
+  },
+  {
+    path: 'rescate-finalizado',
+    loadChildren: () => import('./rescate-finalizado/rescate-finalizado.module').then( m => m.RescateFinalizadoPageModule)
+  },
 
 ];
 
