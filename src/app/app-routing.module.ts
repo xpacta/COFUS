@@ -34,6 +34,14 @@ const routes: Routes = [
     path: 'rescate-finalizado',
     loadChildren: () => import('./rescate-finalizado/rescate-finalizado.module').then( m => m.RescateFinalizadoPageModule)
   },
+  {
+    path: 'form-cr',
+    loadChildren: () => import('./form-cr/form-cr.module').then( m => m.FormCrPageModule)
+  },
+  {
+    path: 'form-jt',
+    loadChildren: () => import('./form-jt/form-jt.module').then( m => m.FormJtPageModule)
+  },
 
 ];
 
