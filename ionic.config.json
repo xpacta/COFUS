@@ -1,0 +1,7 @@
+{
+  "name": "CUFUS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
