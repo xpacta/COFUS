@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FormJTPage } from './form-jt.page';
+import { FormMecPage } from './form-mec.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FormJTPage
+    component: FormMecPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FormJTPageRoutingModule {}
+export class FormMecPageRoutingModule {}
