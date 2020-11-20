@@ -1,5 +1,20 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>Rescate información</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -16,12 +31,21 @@
       <ion-input disabled value="Id"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Eco-Tij</ion-label>
-      <ion-input disabled value="Eco-Tij"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Fallas</ion-label>
-      <ion-textarea rows="4" cols="20" disabled></ion-textarea>
+      <ion-list>
+        <ion-label>Fallas</ion-label>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 3"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 4"></ion-input>
+        </ion-item>
+      </ion-list>
     </ion-item>
     <ion-item>
       <ion-label>Criticidad</ion-label>
@@ -33,7 +57,7 @@
     </ion-item>
     
   </ion-list>
-  <br><br><br>
+  <br><br>
   <ion-button expand="block" fill="outline" routerLink="/form-rescate">Aceptar</ion-button>
   
 </ion-content>

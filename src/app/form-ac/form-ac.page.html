@@ -1,6 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>form-ac</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button color="primary">
+        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Calidad</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,14 +28,27 @@
       <ion-input disabled value="Id"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Fallas</ion-label>
-      <ion-textarea rows="3" cols="20" disabled></ion-textarea>
+      <ion-list>
+        <ion-label>Fallas</ion-label>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 1"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 2"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 3"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input disabled placeholder="Falla 4"></ion-input>
+        </ion-item>
+      </ion-list>
     </ion-item>
     <ion-item>
       <ion-label>Estatus</ion-label>
-      <ion-select placeholder="Seleccione">
+      <ion-select placeholder="Seleccione" id="mySelect">
         <ion-select-option value="Validacion">Validando reparación</ion-select-option>
-        <ion-select-option value="Validacion">Disponible</ion-select-option>
+        <ion-select-option value="Disponible">Disponible para entrega</ion-select-option>
       </ion-select>
      </ion-item>
     <ion-card-content>
@@ -34,3 +62,8 @@
     <ion-button shape="round" color="primary" expand="block" routerLink="/rescate-finalizado">Guardar</ion-button>
   
 </ion-content>
+<style>
+#mySelect{
+  max-width: 100% !important;
+ }
+</style>
