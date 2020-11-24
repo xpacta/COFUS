@@ -1,80 +1,58 @@
-
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon name="person-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon name="notifications-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button color="primary">
-        <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>Jefe transporte</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label># CUFUS</ion-label>
-      <ion-input disabled value="Numero"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>ID</ion-label>
-      <ion-input value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Contacto chofer</ion-label>
-      <ion-input value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      
-      <!-- List of Input Items -->
-      <ion-list>
-        <ion-label>Fallas</ion-label>
+    <ion-list>
         <ion-item>
-          <ion-input placeholder="Falla 1"></ion-input>
+            <ion-label># CUFUS</ion-label>
+            <ion-input disabled value="Numero"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input placeholder="Falla 2"></ion-input>
+            <ion-label>ID</ion-label>
+            <ion-input value=""></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input placeholder="Falla 3"></ion-input>
+            <ion-label>Contacto chofer</ion-label>
+            <ion-input value=""></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input placeholder="Falla 4"></ion-input>
+
+            <!-- List of Input Items -->
+            <ion-list>
+                <ion-label>Fallas</ion-label>
+                <ion-item>
+                    <ion-input placeholder="Falla 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input placeholder="Falla 2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input placeholder="Falla 3"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input placeholder="Falla 4"></ion-input>
+                </ion-item>
+            </ion-list>
         </ion-item>
-      </ion-list>
-    </ion-item>
-    <ion-item>
-      <ion-label>Criticidad</ion-label>
-      <ion-select placeholder="Seleccione">
-        <ion-select-option value="Nooperable">No operable</ion-select-option>
-        <ion-select-option value="Riesgoalto">Operable alto riesgo</ion-select-option>
-        <ion-select-option value="Riesgobajo">Operable bajo riesgo</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label>Lugar de atención</ion-label>
-      <ion-select [(ngModel)]="select-lugar" (ionChange) = "show($event)" placeholder="Seleccione">
-        <ion-select-option value="Taller">Taller</ion-select-option>
-        <ion-select-option value="Encierro">Encierro</ion-select-option>
-        <ion-select-option value="TallerEx">Taller externo</ion-select-option>
-        <ion-select-option value="Rescate">Rescate</ion-select-option>
-      </ion-select>
-  </ion-item>
-    <ion-item #direccion style="display: none;" >
-      <ion-label >Ubicación</ion-label>
-      <ion-textarea rows="4" cols="20" value="" ></ion-textarea>
-    </ion-item>
-  </ion-list>
-  
-  <ion-button shape="round" color="primary" expand="block" routerLink="/form-gm">Enviar</ion-button>
+        <ion-item>
+            <ion-label>Criticidad</ion-label>
+            <ion-select placeholder="Seleccione">
+                <ion-select-option value="Nooperable">No operable</ion-select-option>
+                <ion-select-option value="Riesgoalto">Operable alto riesgo</ion-select-option>
+                <ion-select-option value="Riesgobajo">Operable bajo riesgo</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Lugar de atención</ion-label>
+            <ion-select (ionChange)="show($event)" placeholder="Seleccione">
+                <ion-select-option value="Taller">Taller</ion-select-option>
+                <ion-select-option value="Encierro">Encierro</ion-select-option>
+                <ion-select-option value="TallerEx">Taller externo</ion-select-option>
+                <ion-select-option value="Rescate">Rescate</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item #direccion style="display: none;">
+            <ion-label>Ubicación</ion-label>
+            <ion-textarea rows="4" cols="20" value=""></ion-textarea>
+        </ion-item>
+    </ion-list>
+
+    <ion-button shape="round" color="primary" expand="block" routerLink="/form-gm">Enviar</ion-button>
 </ion-content>

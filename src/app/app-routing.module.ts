@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
   { path: '', redirectTo: 'login',  pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule) },
   { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)  },
   { path: 'form-gm', loadChildren: () => import('./form-gm/form-gm.module').then( m => m.FormGmPageModule)},
   { path: 'form-rescate', loadChildren: () => import('./form-rescate/form-rescate.module').then( m => m.FormRescatePageModule)},
@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'form-ac', loadChildren: () => import('./form-ac/form-ac.module').then( m => m.FormAcPageModule)},
   { path: 'form-mec', loadChildren: () => import('./form-mec/form-mec.module').then( m => m.FormMecPageModule)},
 ];
-  
+
 
 @NgModule({
   imports: [
