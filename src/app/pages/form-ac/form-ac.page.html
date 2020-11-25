@@ -1,0 +1,49 @@
+<app-header></app-header>
+<ion-content>
+    <ion-card>
+        <ion-item>
+            <ion-label># CUFUS</ion-label>
+            <ion-input disabled value="CUFUS"></ion-input>
+            <ion-label>ID</ion-label>
+            <ion-input disabled value="Id"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-list>
+                <ion-label>Fallas</ion-label>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 3"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 4"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <ion-item>
+            <ion-label>Estatus</ion-label>
+            <ion-select placeholder="Seleccione" id="mySelect">
+                <ion-select-option value="Validacion">Validando reparación</ion-select-option>
+                <ion-select-option value="Disponible">Disponible para entrega</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Commentarios</ion-label>
+                <ion-textarea rows="6" cols="20"></ion-textarea>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <br>
+    <ion-button shape="round" color="primary" expand="block" routerLink="/rescate-finalizado">Guardar</ion-button>
+
+</ion-content>
+<style>
+    #mySelect {
+        max-width: 100% !important;
+    }
+</style>

@@ -1,0 +1,51 @@
+<app-header></app-header>
+<ion-content>
+    <ion-item>
+        <ion-label>Fecha y hora</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY HH:mm" value="2020-12-11T11:06Z" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+    </ion-item>
+    <br>
+    <ion-card>
+        <ion-item>
+            <ion-label># CUFUS</ion-label>
+            <ion-input disabled value="CUFUS"></ion-input>
+            <ion-label>ID</ion-label>
+            <ion-input disabled value="Id"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-list>
+                <ion-label>Fallas</ion-label>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 3"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 4"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <ion-item>
+            <ion-label>Estatus</ion-label>
+            <ion-select placeholder="Seleccione">
+                <ion-select-option value="Atender">Por atender</ion-select-option>
+                <ion-select-option value="Proceso">En proceso</ion-select-option>
+                <ion-select-option value="Refaccion">Refacción</ion-select-option>
+                <ion-select-option value="Validacion">Validando reparación</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Diagnóstico</ion-label>
+                <ion-textarea rows="6" cols="20"></ion-textarea>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <br>
+    <ion-button shape="round" color="primary" expand="block" routerLink="">Guardar</ion-button>
+
+</ion-content>

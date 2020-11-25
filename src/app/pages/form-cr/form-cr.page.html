@@ -1,0 +1,52 @@
+<app-header titulo="Registro de entrada"></app-header>
+<ion-content>
+    <ion-item>
+        <ion-label>Reporte</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY HH:mm" value="2020-12-11T11:06Z" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+    </ion-item>
+
+    <ion-list>
+        <ion-item>
+            <ion-label># CUFUS</ion-label>
+            <ion-input disabled value="Numero"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>ID</ion-label>
+            <ion-input disabled value="Id"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-list>
+                <ion-label>Fallas</ion-label>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 3"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled placeholder="Falla 4"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <ion-item>
+            <ion-label>Criticidad</ion-label>
+            <ion-input disabled value="Criticidad"></ion-input>
+        </ion-item>
+
+    </ion-list>
+    <br>
+    <ion-item>
+        <ion-label>Llegada al taller</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY HH:mm" value="2020-12-11T11:06Z" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+    </ion-item>
+    <br><br><br>
+    <ion-button shape="round" color="primary" expand="block" routerLink="/home">Aceptar</ion-button>
+</ion-content>
+<style>
+    ion-label {
+        opacity: 1 !important;
+    }
+</style>
