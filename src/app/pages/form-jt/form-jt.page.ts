@@ -8,6 +8,9 @@ import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/co
 export class FormJTPage implements OnInit {
 
   @ViewChild('direccion', { read: ElementRef }) direccion: ElementRef;
+  @ViewChild('fallaUno', { read: ElementRef }) fallaUno: ElementRef;
+  @ViewChild('fallaDos', { read: ElementRef }) fallaDos: ElementRef;
+  @ViewChild('selectLugar', { read: ElementRef }) lugarAtencion: ElementRef;
   
   constructor(private renderer: Renderer2) { }
 
@@ -15,7 +18,7 @@ export class FormJTPage implements OnInit {
   }
   
   show(event){ 
-    console.log(event.target.value);
+    console.log("Mensaje:"+this.lugarAtencion.nativeElement.value);
     if(event.target.value==="Rescate")
       this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
     else

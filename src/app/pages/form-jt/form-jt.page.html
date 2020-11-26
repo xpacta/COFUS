@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header titulo="Nuevo reporte"></app-header>
 <ion-content>
     <ion-list>
         <ion-item>
@@ -7,11 +7,11 @@
         </ion-item>
         <ion-item>
             <ion-label>ID</ion-label>
-            <ion-input value=""></ion-input>
+            <ion-input #idVehiculo value=""></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Contacto chofer</ion-label>
-            <ion-input value=""></ion-input>
+            <ion-input #contactoOperador value=""></ion-input>
         </ion-item>
         <ion-item>
 
@@ -19,22 +19,22 @@
             <ion-list>
                 <ion-label>Fallas</ion-label>
                 <ion-item>
-                    <ion-input placeholder="Falla 1"></ion-input>
+                    <ion-input #fallaUno placeholder="Falla 1"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input placeholder="Falla 2"></ion-input>
+                    <ion-input #fallaDos placeholder="Falla 2"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input placeholder="Falla 3"></ion-input>
+                    <ion-input #fallaTres placeholder="Falla 3"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input placeholder="Falla 4"></ion-input>
+                    <ion-input #fallaCuatro placeholder="Falla 4"></ion-input>
                 </ion-item>
             </ion-list>
         </ion-item>
         <ion-item>
             <ion-label>Criticidad</ion-label>
-            <ion-select placeholder="Seleccione">
+            <ion-select #selectCriticidad placeholder="Seleccione">
                 <ion-select-option value="Nooperable">No operable</ion-select-option>
                 <ion-select-option value="Riesgoalto">Operable alto riesgo</ion-select-option>
                 <ion-select-option value="Riesgobajo">Operable bajo riesgo</ion-select-option>
@@ -42,7 +42,7 @@
         </ion-item>
         <ion-item>
             <ion-label>Lugar de atención</ion-label>
-            <ion-select (ionChange)="show($event)" placeholder="Seleccione">
+            <ion-select #selectLugar (ionChange)="show($event)" placeholder="Seleccione">
                 <ion-select-option value="Taller">Taller</ion-select-option>
                 <ion-select-option value="Encierro">Encierro</ion-select-option>
                 <ion-select-option value="TallerEx">Taller externo</ion-select-option>
