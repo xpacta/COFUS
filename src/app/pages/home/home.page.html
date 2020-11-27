@@ -17,17 +17,20 @@
         </ion-toolbar>
     </ion-header>
     <ion-list>
-        <ion-item routerLink="/form-gm">
+        <ion-item routerLink="/form-gm" *ngFor="let reportes of reportes">
             <ion-avatar slot="start">
                 <img src="../assets/icon bus.png" />
             </ion-avatar>
             <ion-label>
-                <h2># CUFUS: 00023, ID: 25263</h2>
-                <h2>Estatus: Pendiente</h2>
-                <p>Desde: 13/11/2020 Citado: Pendiente</p>
+                <h2>#: {{ reportes.Id }}, ID: {{reportes.IdUnidad}}</h2>
+                <h2>Estatus: {{ reportes.Estatus}}</h2>
+                <p>Desde: {{reportes.FechaDeLevantamiento}}, Citado: {{reportes.FechaDeCita}}</p>
             </ion-label>
         </ion-item>
-        <ion-item routerLink="/form-cr">
+
+    </ion-list>
+</ion-content>
+<!-- <ion-item routerLink="/form-cr">
             <ion-avatar slot="start">
                 <img src="../assets/icon bus.png" />
             </ion-avatar>
@@ -76,6 +79,4 @@
                 <h2>Estatus: Disponible para entrega</h2>
                 <p>Desde: 13/11/2020 Atendiendo: Murua</p>
             </ion-label>
-        </ion-item>
-    </ion-list>
-</ion-content>
+        </ion-item>-->
