@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
-  { path: 'form-gm', loadChildren: () => import('./pages/form-gm/form-gm.module').then( m => m.FormGmPageModule)},
+  { path: 'form-gm/:id', loadChildren: () => import('./pages/form-gm/form-gm.module').then( m => m.FormGmPageModule)},
   { path: 'form-rescate', loadChildren: () => import('./pages/form-rescate/form-rescate.module').then( m => m.FormRescatePageModule)},
   { path: 'rescate-resol', loadChildren: () => import('./pages/rescate-resol/rescate-resol.module').then( m => m.RescateResolPageModule)},
   { path: 'rescate-info', loadChildren: () => import('./pages/rescate-info/rescate-info.module').then( m => m.RescateInfoPageModule)},

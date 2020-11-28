@@ -17,14 +17,20 @@
         </ion-toolbar>
     </ion-header>
     <ion-list>
-        <ion-item routerLink="/form-gm" *ngFor="let reportes of reportes">
+        <ion-item (click)="redireccionar(reportes.Estatus,reportes.Id)" *ngFor="let reportes of reportes">
             <ion-avatar slot="start">
                 <img src="../assets/icon bus.png" />
             </ion-avatar>
             <ion-label>
-                <h2>#: {{ reportes.Id }}, ID: {{reportes.IdUnidad}}</h2>
-                <h2>Estatus: {{ reportes.Estatus}}</h2>
-                <p>Desde: {{reportes.FechaDeLevantamiento}}, Citado: {{reportes.FechaDeCita}}</p>
+                <h2>#: {{ reportes.Id }}, Unidad: {{reportes.IdUnidad}}
+                    <p style="color:red;">{{ reportes.NEstatus}}</p>
+                </h2>
+
+                <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
+                <p *ngIf="reportes.Process == '1';  else elseCitado">Citado: {{reportes.NProceso}}</p>
+                <ng-template #elseCitado>
+                    <p> Citado: {{reportes.FechaDeCita}}</p>
+                </ng-template>
             </ion-label>
         </ion-item>
 

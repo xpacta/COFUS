@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -14,6 +14,14 @@ export class DataService {
 
   getResportes() {
     return this.http.get('http://settepitijuana.ddns.net:8080/CUFUS/Index.php?ReporteId=2030');
+  }
+
+  postReporte(datos) {
+    return this.http.post('http://settepitijuana.ddns.net:8080/CUFUS/SaveData.php',datos,{headers: new HttpHeaders({"content-Type":"application/json"})});
+  }
+
+  updateCita(datos) {
+    return this.http.post('http://settepitijuana.ddns.net:8080/CUFUS/updateCita.php',datos,{headers: new HttpHeaders({"content-Type":"application/json"})});
   }
 
 }
