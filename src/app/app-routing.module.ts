@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 {
   path: '',
-  redirectTo: 'home',
+  redirectTo: 'login',
   pathMatch: 'full'
 },
 
-  { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)  },
+ { path: 'login', loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)  },
  {
     path: 'inicio',
-    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
+    loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule), canActivate: [AuthGuard]
   },
   { path: 'form-gm/:id', loadChildren: () => import('./pages/form-gm/form-gm.module').then( m => m.FormGmPageModule)},
   { path: 'form-rescate', loadChildren: () => import('./pages/form-rescate/form-rescate.module').then( m => m.FormRescatePageModule)},

@@ -3,19 +3,24 @@
         <ion-card-header>
             <ion-card-title>Debe iniciar sesión para continuar.</ion-card-title>
         </ion-card-header>
-
-        <ion-card-content>
-            <ion-item>
-                <ion-label position="stacked">Usuario:</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label position="stacked">Contraseña:</ion-label>
-                <ion-input type="password"></ion-input>
-            </ion-item>
-
-        </ion-card-content>
-        <ion-button expand="full" routerLink="/home">Iniciar</ion-button>
+        <form (ngSubmit)="OnSubmit( formLogin )" #formLogin="ngForm">
+            <ion-card-content>
+                <ion-item>
+                    <ion-label position="stacked">Usuario:</ion-label> <span *ngIf="formLogin.submitted && formLogin.controls['email'].errors" class="text-danger">El correo es obligatorio</span>
+                    <ion-input type="text" name="email" [(ngModel)]="usuario.email" placeholder="Correo" required email>
+                    </ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="stacked">Contraseña:</ion-label> <span *ngIf="formLogin.submitted && formLogin.controls['password'].errors" class="text-danger">La contraseña no es valida</span>
+                    <ion-input name="password" minlength="8" type="password" [(ngModel)]="usuario.password" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-checkbox name="remember-me" [(ngModel)]="SaveEmail" color="dark" slot="start"></ion-checkbox>
+                    <ion-label>Recordar usuario</ion-label>
+                </ion-item>
+            </ion-card-content>
+            <ion-button type="submit" expand="full">Iniciar</ion-button>
+        </form>
     </ion-card>
 
 </ion-content>
