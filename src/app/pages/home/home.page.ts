@@ -79,8 +79,10 @@ export class HomePage implements OnInit{
     };
     if(estatus=="1")
       this.router.navigate(['/form-gm',id],navigationExtras);
+    if(estatus=="5")
+      this.router.navigate(['/form-cr',id],navigationExtras);
     if(estatus=="2")
-      this.router.navigate(['/form-cr']);
+      this.router.navigate(['/form-mec',id],navigationExtras);
   }
 
   getFilteredByKey(array, key, value) {

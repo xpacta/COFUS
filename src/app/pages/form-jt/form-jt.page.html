@@ -1,57 +1,59 @@
 <app-header titulo="Nuevo reporte"></app-header>
 <ion-content>
-    <ion-list>
-        <ion-item>
-            <ion-label># CUFUS</ion-label>
-            <ion-input disabled value="Numero"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>ID</ion-label>
-            <ion-input #idVehiculo value=""></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label>Contacto chofer</ion-label>
-            <ion-input #contactoOperador value=""></ion-input>
-        </ion-item>
-        <ion-item>
+    <form [formGroup]="reporteInicial" (ngSubmit)="onClick()">
+        <ion-list>
+            <!-- <ion-item>
+                <ion-label># CUFUS</ion-label>
+                <ion-input disabled value="Numero"></ion-input>
+            </ion-item>-->
+            <ion-item>
+                <ion-label>ID</ion-label>
+                <ion-input #idVehiculo formControlName="idVehiculo" required value=""></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Contacto chofer</ion-label>
+                <ion-input #contactoOperador formControlName="contactoOperador" value=""></ion-input>
+            </ion-item>
+            <ion-item>
 
-            <!-- List of Input Items -->
-            <ion-list>
-                <ion-label>Fallas</ion-label>
-                <ion-item>
-                    <ion-input #fallaUno placeholder="Falla 1"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input #fallaDos placeholder="Falla 2"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input #fallaTres placeholder="Falla 3"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input #fallaCuatro placeholder="Falla 4"></ion-input>
-                </ion-item>
-            </ion-list>
-        </ion-item>
-        <ion-item>
-            <ion-label>Criticidad</ion-label>
-            <ion-select #selectCriticidad placeholder="Seleccione">
-                <ion-select-option value="3">No operable</ion-select-option>
-                <ion-select-option value="2">Operable alto riesgo</ion-select-option>
-                <ion-select-option value="1">Operable bajo riesgo</ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-item>
-            <ion-label>Lugar de atención</ion-label>
-            <ion-select #selectLugar (ionChange)="show($event)" placeholder="Seleccione">
-                <ion-select-option value="1">Murua</ion-select-option>
-                <ion-select-option value="2">Otro domicilio</ion-select-option>
-            </ion-select>
-        </ion-item>
-        <ion-item #direccion style="display: none;">
-            <ion-label>Ubicación</ion-label>
-            <ion-textarea #otrodomicilio rows="4" cols="20" value=""></ion-textarea>
-        </ion-item>
-    </ion-list>
+                <!-- List of Input Items -->
+                <ion-list>
+                    <ion-label>Fallas</ion-label>
+                    <ion-item>
+                        <ion-input #fallaUno formControlName="fallaUno" placeholder="Falla 1"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #fallaDos placeholder="Falla 2"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #fallaTres placeholder="Falla 3"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #fallaCuatro placeholder="Falla 4"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+            <ion-item>
+                <ion-label>Criticidad</ion-label>
+                <ion-select formControlName="selectCriticidad" #selectCriticidad placeholder="Seleccione">
+                    <ion-select-option value="3">No operable</ion-select-option>
+                    <ion-select-option value="2">Operable alto riesgo</ion-select-option>
+                    <ion-select-option value="1">Operable bajo riesgo</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Lugar de atención</ion-label>
+                <ion-select formControlName="selectLugar" #selectLugar (ionChange)="show($event)" placeholder="Seleccione">
+                    <ion-select-option value="1">Murua</ion-select-option>
+                    <ion-select-option value="2">Otro domicilio</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item #direccion style="display: none;">
+                <ion-label>Ubicación</ion-label>
+                <ion-textarea #otrodomicilio rows="4" cols="20" value=""></ion-textarea>
+            </ion-item>
+        </ion-list>
 
-    <ion-button (click)="onClick()" shape="round" color="primary" expand="block" routerLink="/form-gm">Enviar</ion-button>
+        <ion-button type="submit" shape="round" color="primary" expand="block">Enviar</ion-button>
+    </form>
 </ion-content>

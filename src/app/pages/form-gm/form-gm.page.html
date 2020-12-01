@@ -1,54 +1,61 @@
 <app-header titulo="Asignación de cita"></app-header>
 
 <ion-content>
-    <ion-item>
-        <ion-label>Fecha y hora</ion-label>
-        <ion-datetime #fechacita displayFormat="YYYY-MM-DD HH:mm"></ion-datetime>
-    </ion-item>
-    <ion-list>
+    <form [formGroup]="reporteUpdate" (ngSubmit)="enviar()">
         <ion-item>
-            <ion-label>ID</ion-label>
-            <ion-input disabled value="Id"></ion-input>
+            <ion-label>Fecha y hora</ion-label>
+            <ion-datetime formControlName="fechaCita" #fechacita displayFormat="YYYY-MM-DD HH:mm"></ion-datetime>
+        </ion-item>
+        <ion-list>
+            <ion-item>
+                <ion-label>Unidad</ion-label>
+                <ion-input disabled #idunidad></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-list>
+                    <ion-label>Fallas</ion-label>
+                    <ion-item>
+                        <ion-input #falla1 disabled placeholder=""></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #falla2 disabled placeholder=""></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #falla3 disabled placeholder=""></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-input #falla4 disabled placeholder=""></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-item>
+            <ion-item>
+                <ion-label>Criticidad</ion-label>
+                <ion-input #criticidad disabled></ion-input>
+            </ion-item>
+        </ion-list>
+        <ion-item>
+            <ion-label>Lugar de atención</ion-label>
+            <ion-input #lugarjt disabled></ion-input>
         </ion-item>
         <ion-item>
-            <ion-list>
-                <ion-label>Fallas</ion-label>
-                <ion-item>
-                    <ion-input disabled placeholder="Falla 1"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input disabled placeholder="Falla 2"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input disabled placeholder="Falla 3"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-input disabled placeholder="Falla 4"></ion-input>
-                </ion-item>
-            </ion-list>
+            <ion-label>Lugar de atención</ion-label>
+            <ion-select #lugaratencion formControlName="lugaratencion" (ionChange)="show($event)" placeholder="Seleccione">
+                <ion-select-option value="3">Taller</ion-select-option>
+                <ion-select-option value="4">Encierro</ion-select-option>
+                <ion-select-option value="5">Taller externo</ion-select-option>
+                <ion-select-option disabled value="6">Rescate</ion-select-option>
+            </ion-select>
         </ion-item>
-        <ion-item>
-            <ion-label>Criticidad</ion-label>
-            <ion-input disabled value="Criticidad JT"></ion-input>
+        <ion-item #direccion style="display: none;">
+            <ion-label>Ubicación</ion-label>
+            <ion-textarea #ubicacion rows="4" cols="20" value=""></ion-textarea>
         </ion-item>
-    </ion-list>
-    <ion-item>
-        <ion-label>Lugar de atención</ion-label>
-        <ion-input disabled value="Taller" #rescatejt></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label>Lugar de atención</ion-label>
-        <ion-select (ionChange)="show($event)" placeholder="Seleccione">
-            <ion-select-option value="Taller">Taller</ion-select-option>
-            <ion-select-option value="Encierro">Encierro</ion-select-option>
-            <ion-select-option value="TallerEx">Taller externo</ion-select-option>
-            <ion-select-option value="Rescate">Rescate</ion-select-option>
-        </ion-select>
-    </ion-item>
-    <ion-item #direccion style="display: none;">
-        <ion-label>Ubicación</ion-label>
-        <ion-textarea rows="4" cols="20" value=""></ion-textarea>
-    </ion-item>
-    <br>
-    <ion-button (click)="enviar()" shape="round" color="primary" expand="block">Aceptar</ion-button>
+        <br>
+        <ion-button type="submit" shape="round" color="primary" expand="block">Asignar cita</ion-button>
+    </form>
 </ion-content>
+<style>
+    ion-label {
+        opacity: 1 !important;
+    }
+</style>

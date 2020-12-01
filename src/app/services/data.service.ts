@@ -24,4 +24,8 @@ export class DataService {
     return this.http.post('http://settepitijuana.ddns.net:8080/CUFUS/updateCita.php',datos,{headers: new HttpHeaders({"content-Type":"application/json"})});
   }
 
+  updateLlegada(datos) {
+    return this.http.post('http://settepitijuana.ddns.net:8080/CUFUS/updateLlegada.php',datos,{headers: new HttpHeaders({"content-Type":"application/json"})});
+  }
+
 }
