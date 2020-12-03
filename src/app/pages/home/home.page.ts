@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { NavigationExtras, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface reporte {
   Id: number;
@@ -28,15 +29,28 @@ interface reporte {
 
 export class HomePage implements OnInit{
   arrayOfValue: any;
-   
-  constructor( private dataService: DataService,private router: Router) {}
+  indicador: any;
+  @ViewChild('menu', { read: ElementRef }) menu: ElementRef;
+  @ViewChild('btnJT', { read: ElementRef }) btnJT: ElementRef;
+  iEstatus: string;
+
+  constructor( private dataService: DataService,private router: Router,private sanitizer: DomSanitizer) {}
   /* Nota Alfredo Ruelas 26-11-2020
   ///declaramos una nueva variable y le dedimos el tipado que tiene la respuesta del server
   ///obvio esto puede cambiar. */
   reportes: reporte[] = [];
+  usuario: string;
+  perfil: any;
 
+  public getHtmlWithBypassedSecurity(code: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(code);
+  }   
   ngOnInit(){
-    
+     this.usuario = localStorage.getItem('user');
+    this.perfil= localStorage.getItem('perfil');
+
+    this.indicador=1;
+
     this.dataService.getPost()
       /*para que se pueda llenar la variable con tipado debemos de tipar tambien el dato
         se recibe* poniendo el dato entre (data : tipado[]) */
@@ -53,6 +67,11 @@ export class HomePage implements OnInit{
 
   }
   ionViewWillEnter(){
+    if(this.perfil=="0")
+      this.btnJT.nativeElement.disabled=false;
+    else
+      this.btnJT.nativeElement.disabled=true;
+
         this.dataService.getPost()
       /*para que se pueda llenar la variable con tipado debemos de tipar tambien el dato
         se recibe* poniendo el dato entre (data : tipado[]) */
@@ -68,7 +87,16 @@ export class HomePage implements OnInit{
     } );
   }
 
+  show(event){
+    if(event.target.value=="0"){
+     this.indicador=1;
+    }else{this.indicador=2
+      this.iEstatus=event.target.value;
+    }
+  }
+
   redireccionar(estatus,id){
+    console.log("estatus"+estatus);
     const queryParams: any = {};
     this.arrayOfValue=this.getFilteredByKey(this.reportes,"Id",id);
     queryParams.myArray = JSON.stringify(this.arrayOfValue);
@@ -77,12 +105,29 @@ export class HomePage implements OnInit{
     const navigationExtras: NavigationExtras = {
       queryParams
     };
-    if(estatus=="1")
+    if(estatus=="1" && this.usuario=="2") //Por atender
       this.router.navigate(['/form-gm',id],navigationExtras);
-    if(estatus=="5")
+
+    if(estatus=="5")//Citado
       this.router.navigate(['/form-cr',id],navigationExtras);
-    if(estatus=="2")
+
+    if(estatus=="2" && (this.perfil=="0"))//En proceso
       this.router.navigate(['/form-mec',id],navigationExtras);
+
+    if(estatus=="3" && (this.perfil=="0"))//Por refaccion
+      this.router.navigate(['/form-mec',id],navigationExtras);
+
+    if(estatus=="6" && (this.perfil=="1"))//Validando
+      this.router.navigate(['/form-ac',id],navigationExtras);  
+
+    if(estatus=="4")//Disponible
+      this.router.navigate(['/rescate-resol',id],navigationExtras);  
+
+    if(estatus=="8" && this.perfil=="3")//Rescate
+      this.router.navigate(['/rescate-info',id],navigationExtras);
+
+    if(estatus=="9" )//Atendiendo rescate
+      this.router.navigate(['/form-rescate'],navigationExtras);    
   }
 
   getFilteredByKey(array, key, value) {

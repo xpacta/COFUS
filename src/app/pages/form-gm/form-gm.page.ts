@@ -40,7 +40,7 @@ export class FormGmPage implements OnInit {
     
   }
 
-  
+
   ionViewWillEnter(){
     this.route.paramMap.subscribe(paramMap => {
        this.id=paramMap.get('id');
@@ -55,11 +55,15 @@ export class FormGmPage implements OnInit {
         this.falla4.nativeElement.value=this.arraysplit[3];
     this.criticidad.nativeElement.value=this.arrayOfValues[0].NCriticidad;
     this.lugarjt.nativeElement.value=this.arrayOfValues[0].NLugar;
-    
+    if(this.arrayOfValues[0].LugarDeAtencion=="6"){
+      this.ubicacion.nativeElement.value=this.arrayOfValues[0].Direccion;
+      this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
+    }
   }
 
   enviar(){
     if(this.reporteUpdate.valid){  
+      if(this.lugaratencion.nativeElement.value!=="6"){
     const datos={
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
@@ -76,6 +80,25 @@ export class FormGmPage implements OnInit {
       });
       this.router.navigateByUrl('/home');
     });
+  }
+  else{
+    const datos={
+      Id: this.arrayOfValues[0].Id,
+      FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
+      Direccion: this.ubicacion.nativeElement.value,
+      Estatus: "8",
+      Proceso: "4"
+    };
+    this.dataService.updateCita(datos).subscribe(data=>{
+      console.log(data);
+      Swal.fire({
+        allowOutsideClick: false,
+        icon: "success",
+        text: 'Orden generada correctamente'
+      });
+      this.router.navigateByUrl('/home');
+    });
+  }
   }else{
     alert("Falta rellenar algunos campos");
   }
@@ -88,7 +111,4 @@ export class FormGmPage implements OnInit {
     else
       this.renderer.setStyle(this.direccion.nativeElement, 'display', 'none');
   }
-
-
-
 }

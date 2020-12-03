@@ -2,35 +2,39 @@
 <ion-content>
     <ion-item>
         <ion-label>Fecha y hora</ion-label>
-        <ion-datetime displayFormat="D MMM YYYY HH:mm" value="2020-12-11T11:06Z" monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
+        <ion-datetime #fecha displayFormat="YYYY-MM-DD HH:mm" disabled monthShortNames="Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre"></ion-datetime>
     </ion-item>
     <br><br>
     <ion-card>
         <ion-card-header>
             <ion-card-subtitle># CUFUS</ion-card-subtitle>
             <ion-card-title>
-                <ion-input placeholder="Identificador"></ion-input>
+                <ion-input #idcufus disabled></ion-input>
             </ion-card-title>
         </ion-card-header>
         <ion-card-header>
             <ion-card-subtitle>Contacto</ion-card-subtitle>
-            <ion-card-title><a href="tel:6641234123">6641234123</a></ion-card-title>
+            <ion-card-title>
+                <a #contacto href="tel:6641234123"></a>
+            </ion-card-title>
         </ion-card-header>
         <ion-card-header>
             <ion-card-subtitle>Direccion</ion-card-subtitle>
-            <ion-card-title><a href="https://www.google.com.mx/maps/place/Madrid+13509,+Lomas+Taurinas,+22410">Calle madrid 13509 lomas taurinas</a></ion-card-title>
+            <ion-card-title>
+                <a #direccion href=""></a>
+            </ion-card-title>
         </ion-card-header>
         <ion-card-content>
             <ion-item>
                 <ion-label position="floating">Diagnóstico</ion-label>
-                <ion-textarea rows="6" cols="20"></ion-textarea>
+                <ion-textarea #diagnostico rows="6" cols="20"></ion-textarea>
             </ion-item>
         </ion-card-content>
     </ion-card>
     <br><br><br>
     <ion-item>
-        <ion-button color="primary" shape="round" routerLink="/rescate-resol">Se resolvió</ion-button>
-        <ion-button color="primary" shape="round" routerLink="/rescate-noresol">No se resolvió</ion-button>
+        <ion-button (click)="enviar()" color="primary" shape="round">Se resolvió</ion-button>
+        <ion-button (click)="enviar2()" color="primary" shape="round">No se resolvió</ion-button>
     </ion-item>
 
 </ion-content>

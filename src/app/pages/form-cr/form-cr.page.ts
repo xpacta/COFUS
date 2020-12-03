@@ -42,6 +42,7 @@ export class FormCrPage implements OnInit {
     this.fechacita.nativeElement.value=this.arrayOfValues[0].FechaDeCita;
     this.idunidad.nativeElement.value=this.arrayOfValues[0].IdUnidad;
     this.arraysplit=this.arrayOfValues[0].Fallas.split("-");
+    console.log(this.arraysplit);
         this.falla1.nativeElement.value=this.arraysplit[0];
         this.falla2.nativeElement.value=this.arraysplit[1];
         this.falla3.nativeElement.value=this.arraysplit[2];

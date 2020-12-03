@@ -4,6 +4,8 @@ import { UsuarioModel } from '../Models/Usuario.Model';
 import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
+import { AngularDelegate } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +15,8 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   usuario: UsuarioModel;
-  constructor( private auth: AuthService, private router: Router ) { }
+  valor: any;
+  constructor( private auth: AuthService, private router: Router,private dataService: DataService) { }
 
   SaveEmail = false;
   ngOnInit() {
@@ -42,8 +45,16 @@ export class LoginPage implements OnInit {
       if(this.SaveEmail){
         localStorage.setItem('email', this.usuario.email);
       }
-      this.router.navigateByUrl('/home');
-      console.log(resp);
+      console.log(resp.localId);
+      this.dataService.getUsuario(resp.localId).subscribe(data=>{
+        console.log(data);
+        this.valor=JSON.stringify(data);
+        this.valor=JSON.parse(this.valor);
+        localStorage.setItem('user',this.valor.Usuario);
+        localStorage.setItem('perfil',this.valor.Perfil);
+        this.router.navigateByUrl('/home');
+      });  
+
     }, (err) => {
     console.log(err.error.error.message);
     Swal.fire({

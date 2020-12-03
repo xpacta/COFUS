@@ -41,11 +41,11 @@
         <ion-card-content>
             <ion-item>
                 <ion-label position="floating">Diagnóstico</ion-label>
-                <ion-textarea rows="6" cols="20"></ion-textarea>
+                <ion-textarea #diagnostico rows="6" cols="20"></ion-textarea>
             </ion-item>
         </ion-card-content>
     </ion-card>
     <br>
-    <ion-button shape="round" color="primary" expand="block" routerLink="/home">Guardar</ion-button>
+    <ion-button (click)="enviar()" shape="round" color="primary" expand="block">Guardar</ion-button>
 
 </ion-content>

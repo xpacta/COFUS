@@ -3,43 +3,44 @@
     <ion-card>
         <ion-item>
             <ion-label># CUFUS</ion-label>
-            <ion-input disabled value="CUFUS"></ion-input>
-            <ion-label>ID</ion-label>
-            <ion-input disabled value="Id"></ion-input>
+            <ion-input disabled #idcufus></ion-input>
+            <ion-label>Unidad</ion-label>
+            <ion-input disabled #idunidad></ion-input>
         </ion-item>
         <ion-item>
             <ion-list>
                 <ion-label>Fallas</ion-label>
                 <ion-item>
-                    <ion-input disabled placeholder="Falla 1"></ion-input>
+                    <ion-input disabled #falla1></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input disabled placeholder="Falla 2"></ion-input>
+                    <ion-input disabled #falla2></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input disabled placeholder="Falla 3"></ion-input>
+                    <ion-input disabled #falla3></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-input disabled placeholder="Falla 4"></ion-input>
+                    <ion-input disabled #falla4></ion-input>
                 </ion-item>
             </ion-list>
         </ion-item>
         <ion-item>
             <ion-label>Estatus</ion-label>
-            <ion-select placeholder="Seleccione" id="mySelect">
-                <ion-select-option value="Validacion">Validando reparación</ion-select-option>
-                <ion-select-option value="Disponible">Disponible para entrega</ion-select-option>
+            <ion-select #estatus placeholder="Seleccione" id="mySelect">
+                <ion-select-option value="6">Validando reparación</ion-select-option>
+                <ion-select-option value="4">Disponible para entrega</ion-select-option>
+                <ion-select-option value="2">Regresar a taller</ion-select-option>
             </ion-select>
         </ion-item>
         <ion-card-content>
             <ion-item>
-                <ion-label position="floating">Commentarios</ion-label>
-                <ion-textarea rows="6" cols="20"></ion-textarea>
+                <ion-label position="floating">Comentarios</ion-label>
+                <ion-textarea #comentarios rows="6" cols="20"></ion-textarea>
             </ion-item>
         </ion-card-content>
     </ion-card>
     <br>
-    <ion-button shape="round" color="primary" expand="block" routerLink="/rescate-finalizado">Guardar</ion-button>
+    <ion-button (click)="enviar()" shape="round" color="primary" expand="block">Enviar</ion-button>
 
 </ion-content>
 <style>

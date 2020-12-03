@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink='/form-jt'>
+    <ion-fab-button #btnJT routerLink='/form-jt'>
         <ion-icon name="add"></ion-icon>
     </ion-fab-button>
 </ion-fab>
@@ -16,24 +16,67 @@
             <ion-title size="large">Lista de seguimiento de unidades con reporte a taller</ion-title>
         </ion-toolbar>
     </ion-header>
-    <ion-list>
-        <ion-item (click)="redireccionar(reportes.Estatus,reportes.Id)" *ngFor="let reportes of reportes">
-            <ion-avatar slot="start">
-                <img src="../assets/icon bus.png" />
-            </ion-avatar>
-            <ion-label>
-                <h2>#: {{ reportes.Id }}, Unidad: {{reportes.IdUnidad}}
-                    <p style="color:red;">{{ reportes.NEstatus}}</p>
-                </h2>
+    <ion-item>
+        <ion-label>
+            Filtrar
+        </ion-label>
+        <ion-select #selectEstatus (ionChange)="show($event)" placeholder="Seleccione">
+            <ion-select-option value="1" class="">Por atender</ion-select-option>
+            <ion-select-option value="2" class="">En proceso</ion-select-option>
+            <ion-select-option value="3" class="">Por refacción</ion-select-option>
+            <ion-select-option value="5" class="">Citado</ion-select-option>
+            <ion-select-option value="6" class="">Validando</ion-select-option>
+            <ion-select-option value="8" class="">Rescate</ion-select-option>
+            <ion-select-option value="9" class="">Atendiendo rescate</ion-select-option>
+            <ion-select-option value="4" class="">Disponible</ion-select-option>
+            <ion-select-option value="7" class="">Entregado</ion-select-option>
+            <ion-select-option value="0" class="">Todos</ion-select-option>
+        </ion-select>
+    </ion-item>
 
-                <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
-                <p *ngIf="reportes.Process == '1';  else elseCitado">Citado: {{reportes.NProceso}}</p>
-                <ng-template #elseCitado>
-                    <p> Citado: {{reportes.FechaDeCita}}</p>
-                </ng-template>
-            </ion-label>
-        </ion-item>
+    <ion-list #menu>
+        <ng-container *ngIf="indicador == '1'; else elseEstatus">
+            <ion-item (click)="redireccionar(reportes.Estatus,reportes.Id)" *ngFor="let reportes of reportes">
 
+                <ion-avatar slot="start">
+                    <img src="../assets/icon bus.png" />
+                </ion-avatar>
+                <ion-label>
+                    <h2>#: {{ reportes.Id }}, Unidad: {{reportes.IdUnidad}}
+                        <p style="color:red;">{{ reportes.NEstatus}}</p>
+                    </h2>
+
+                    <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
+                    <p *ngIf="reportes.Estatus == '1';  else elseCitado">En espera</p>
+                    <ng-template #elseCitado>
+                        <p> Citado: {{reportes.FechaDeCita}}</p>
+                    </ng-template>
+                </ion-label>
+            </ion-item>
+
+        </ng-container>
+        <ng-template #elseEstatus>
+            <ng-container *ngFor="let reportes of reportes">
+                <ion-item (click)="redireccionar(reportes.Estatus,reportes.Id)" *ngIf=" reportes.Estatus== iEstatus">
+
+                    <ion-avatar slot="start">
+                        <img src="../assets/icon bus.png" />
+                    </ion-avatar>
+                    <ion-label>
+                        <h2>#: Unidad: {{reportes.IdUnidad}}
+                            <p style="color:red;">{{ reportes.NEstatus}}</p>
+                        </h2>
+
+                        <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
+                        <p *ngIf="reportes.Estatus == '1';  else elseCitado">En espera</p>
+                        <ng-template #elseCitado>
+                            <p> Citado: {{reportes.FechaDeCita}}</p>
+                        </ng-template>
+                    </ion-label>
+
+                </ion-item>
+            </ng-container>
+        </ng-template>
     </ion-list>
 </ion-content>
 <!-- <ion-item routerLink="/form-cr">

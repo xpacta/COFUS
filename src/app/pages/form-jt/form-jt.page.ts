@@ -40,7 +40,7 @@ export class FormJTPage implements OnInit {
   
   show(event){ 
     
-    if(event.target.value==="Rescate")
+    if(event.target.value==="6")
       this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
     else
       this.renderer.setStyle(this.direccion.nativeElement, 'display', 'none');
@@ -49,14 +49,14 @@ export class FormJTPage implements OnInit {
   onClick(){
     if(this.reporteInicial.valid){  
     var fallas: string;
-    fallas = `${this.fallaUno.nativeElement.value} ${this.fallaDos.nativeElement.value} ${this.fallaTres.nativeElement.value} ${this.fallaCuatro.nativeElement.value}`;
-    fallas=fallas.replace(" ","-");
+    fallas = `${this.fallaUno.nativeElement.value}-${this.fallaDos.nativeElement.value}-${this.fallaTres.nativeElement.value}-${this.fallaCuatro.nativeElement.value}`;
+    //fallas=fallas.replace(" ","-");
 
     //console.log(fallas); 
     var datos = { IdUnidad: this.idVehiculo.nativeElement.value, 
                   Fallas: fallas,
                   Contacto: this.contactoOperador.nativeElement.value, Criticidad: this.selectCriticidad.nativeElement.value,
-                  LugarDeAtencion: this.lugarAtencion.nativeElement.value,Estatus:"1",Process:"1",Direccion: ""
+                  LugarDeAtencion: this.lugarAtencion.nativeElement.value,Estatus:"1",Process:"1",Direccion: this.otrodomicilio.nativeElement.value
                 };
 
     this.dataService.postReporte(datos).subscribe(data=>{
