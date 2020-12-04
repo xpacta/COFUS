@@ -105,28 +105,28 @@ export class HomePage implements OnInit{
     const navigationExtras: NavigationExtras = {
       queryParams
     };
-    if(estatus=="1" && this.usuario=="2") //Por atender
+    if(estatus=="1" && this.perfil=="1") //Por atender
       this.router.navigate(['/form-gm',id],navigationExtras);
 
-    if(estatus=="5")//Citado
+    if(estatus=="5" && this.perfil=="2")//Citado
       this.router.navigate(['/form-cr',id],navigationExtras);
 
-    if(estatus=="2" && (this.perfil=="0"))//En proceso
+    if(estatus=="2" && this.perfil=="1")//En proceso
       this.router.navigate(['/form-mec',id],navigationExtras);
 
-    if(estatus=="3" && (this.perfil=="0"))//Por refaccion
+    if(estatus=="3" && this.perfil=="1")//Por refaccion
       this.router.navigate(['/form-mec',id],navigationExtras);
 
-    if(estatus=="6" && (this.perfil=="1"))//Validando
+    if(estatus=="6" && this.perfil=="3")//Validando
       this.router.navigate(['/form-ac',id],navigationExtras);  
 
-    if(estatus=="4")//Disponible
+    if(estatus=="4" && this.perfil=="2")//Disponible
       this.router.navigate(['/rescate-resol',id],navigationExtras);  
 
-    if(estatus=="8" && this.perfil=="3")//Rescate
+    if(estatus=="8" && this.perfil=="4")//Rescate
       this.router.navigate(['/rescate-info',id],navigationExtras);
 
-    if(estatus=="9" )//Atendiendo rescate
+    if(estatus=="9" && this.perfil=="4")//Atendiendo rescate
       this.router.navigate(['/form-rescate'],navigationExtras);    
   }
 

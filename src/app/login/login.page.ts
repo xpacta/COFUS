@@ -16,6 +16,8 @@ export class LoginPage implements OnInit {
 
   usuario: UsuarioModel;
   valor: any;
+  myJSONString: any;
+  myJSON: any;
   constructor( private auth: AuthService, private router: Router,private dataService: DataService) { }
 
   SaveEmail = false;
@@ -45,8 +47,11 @@ export class LoginPage implements OnInit {
       if(this.SaveEmail){
         localStorage.setItem('email', this.usuario.email);
       }
-      console.log(resp.localId);
-      this.dataService.getUsuario(resp.localId).subscribe(data=>{
+       this.myJSONString = JSON.stringify(resp);
+       this.myJSON= JSON.parse(this.myJSONString);
+      console.log(this.myJSON.localId);
+      
+      this.dataService.getUsuario(this.myJSON.localId).subscribe(data=>{
         console.log(data);
         this.valor=JSON.stringify(data);
         this.valor=JSON.parse(this.valor);
