@@ -56,7 +56,8 @@ export class FormJTPage implements OnInit {
     var datos = { IdUnidad: this.idVehiculo.nativeElement.value, 
                   Fallas: fallas,
                   Contacto: this.contactoOperador.nativeElement.value, Criticidad: this.selectCriticidad.nativeElement.value,
-                  LugarDeAtencion: this.lugarAtencion.nativeElement.value,Estatus:"1",Process:"1",Direccion: this.otrodomicilio.nativeElement.value
+                  LugarDeAtencion: this.lugarAtencion.nativeElement.value,Estatus:"1",Process:"1",Direccion: this.otrodomicilio.nativeElement.value,
+                  IdOneSignal: localStorage.getItem('idOneSignal')
                 };
 
     this.dataService.postReporte(datos).subscribe(data=>{

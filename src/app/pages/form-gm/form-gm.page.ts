@@ -69,7 +69,8 @@ export class FormGmPage implements OnInit {
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
       Direccion: this.ubicacion.nativeElement.value,
       Estatus: "5",
-      Proceso: "2"
+      Proceso: "2",
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateCita(datos).subscribe(data=>{
       console.log(data);
@@ -82,12 +83,14 @@ export class FormGmPage implements OnInit {
     });
   }
   else{
+   
     const datos={
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
       Direccion: this.ubicacion.nativeElement.value,
       Estatus: "8",
-      Proceso: "4"
+      Proceso: "4",
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateCita(datos).subscribe(data=>{
       console.log(data);
