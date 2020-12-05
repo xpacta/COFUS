@@ -47,7 +47,8 @@ export class FormRescatePage implements OnInit {
       Id: this.arrayOfValues[0].Id,
       Estatus:"9",
       Fecha: `${moment(this.fecha.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fecha.nativeElement.value).format('HH:mm')}`,
-      Diagnostico: this.diagnostico.nativeElement.value
+      Diagnostico: this.diagnostico.nativeElement.value,
+      IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateDiagnostico(datos).subscribe(data=>{
       
@@ -69,7 +70,8 @@ export class FormRescatePage implements OnInit {
       Id: this.arrayOfValues[0].Id,
       Estatus:"1",
       Fecha: `${moment(this.fecha.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fecha.nativeElement.value).format('HH:mm')}`,
-      Diagnostico: this.diagnostico.nativeElement.value
+      Diagnostico: this.diagnostico.nativeElement.value,
+      IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateDiagnostico(datos).subscribe(data=>{
       

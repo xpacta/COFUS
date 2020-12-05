@@ -41,7 +41,9 @@ export class RescateResolPage implements OnInit {
       Id: this.arrayOfValues[0].Id,
       Operador: this.operador.nativeElement.value,
       Estatus: "7",
-      Proceso: "5"
+      Proceso: "5",
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateEntrega(datos).subscribe(data=>{
       console.log(data);

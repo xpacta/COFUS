@@ -49,7 +49,8 @@ export class FormAcPage implements OnInit {
     const datos={
       Id: this.arrayOfValues[0].Id,
       Estatus: this.estatus.nativeElement.value,
-      Comentarios: this.comentarios.nativeElement.value
+      Comentarios: this.comentarios.nativeElement.value,
+      IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateCalidad(datos).subscribe(data=>{
       console.log(data);

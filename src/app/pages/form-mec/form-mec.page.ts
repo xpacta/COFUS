@@ -54,7 +54,9 @@ export class FormMecPage implements OnInit {
       Id: this.arrayOfValues[0].Id,
       Fecha: `${moment(this.fecha.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fecha.nativeElement.value).format('HH:mm')}`,
       Estatus: this.estatus.nativeElement.value,
-      Diagnostico: this.diagnostico.nativeElement.value
+      Diagnostico: this.diagnostico.nativeElement.value,
+      IdUnidad: this.arrayOfValues[0] .IdUnidad,
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateDiagnostico(datos).subscribe(data=>{
       console.log(data);
