@@ -64,7 +64,6 @@ export class FormGmPage implements OnInit {
   enviar(){
     if(this.reporteUpdate.valid){  
       if(this.lugaratencion.nativeElement.value!=="6"){
-        //console.log("d: " +this.arrayOfValues[0].IdUnidad);
     const datos={
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
