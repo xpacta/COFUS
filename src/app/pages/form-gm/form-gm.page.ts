@@ -64,13 +64,15 @@ export class FormGmPage implements OnInit {
   enviar(){
     if(this.reporteUpdate.valid){  
       if(this.lugaratencion.nativeElement.value!=="6"){
+        //console.log("d: " +this.arrayOfValues[0].IdUnidad);
     const datos={
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
       Direccion: this.ubicacion.nativeElement.value,
       Estatus: "5",
       Proceso: "2",
-      IdOneSignal: this.arrayOfValues[0].IdOneSignal
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal,
+      IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateCita(datos).subscribe(data=>{
       console.log(data);
@@ -90,7 +92,8 @@ export class FormGmPage implements OnInit {
       Direccion: this.ubicacion.nativeElement.value,
       Estatus: "8",
       Proceso: "4",
-      IdOneSignal: this.arrayOfValues[0].IdOneSignal
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal,
+      IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateCita(datos).subscribe(data=>{
       console.log(data);
