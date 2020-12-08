@@ -5,7 +5,7 @@ import { AuthService } from '../services/auth.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
-import { AngularDelegate } from '@ionic/angular';
+import { EncryptionDecryptionService } from '../services/encryption-decryption.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +18,14 @@ export class LoginPage implements OnInit {
   valor: any;
   myJSONString: any;
   myJSON: any;
-  constructor( private auth: AuthService, private router: Router,private dataService: DataService) { }
+  constructor( private auth: AuthService, private router: Router, private dataService: DataService, private EncrypDecript: EncryptionDecryptionService) { }
 
   SaveEmail = false;
   ngOnInit() {
     this.usuario = new UsuarioModel();
-    if( localStorage.getItem('email')){
+    if ( localStorage.getItem('email') ){
       this.usuario.email = localStorage.getItem('email');
+      this.usuario.password = this.EncrypDecript.decrypt(localStorage.getItem('password'));
       this.SaveEmail = true;
     }
   }
@@ -46,15 +47,16 @@ export class LoginPage implements OnInit {
       Swal.close();
       if(this.SaveEmail){
         localStorage.setItem('email', this.usuario.email);
+        localStorage.setItem('password', this.EncrypDecript.encrypt(this.usuario.password));
       }
-       this.myJSONString = JSON.stringify(resp);
-       this.myJSON= JSON.parse(this.myJSONString);
+      this.myJSONString = JSON.stringify(resp);
+      this.myJSON = JSON.parse(this.myJSONString);
       console.log(this.myJSON.localId);
-      
+
       this.dataService.getUsuario(this.myJSON.localId).subscribe(data=>{
         console.log(data);
-        this.valor=JSON.stringify(data);
-        this.valor=JSON.parse(this.valor);
+        this.valor = JSON.stringify(data);
+        this.valor = JSON.parse(this.valor);
         localStorage.setItem('user',this.valor.Usuario);
         localStorage.setItem('perfil',this.valor.Perfil);
         localStorage.setItem('idOneSignal',this.valor.IdOneSignal);

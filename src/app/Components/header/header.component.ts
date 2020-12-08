@@ -1,18 +1,24 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { Component, Input, ViewChild } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
+import { PopoverbodyComponent } from '../popoverbody/popoverbody.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: 'header.component.html'
 })
 export class HeaderComponent {
-  constructor(private auth: AuthService, private router: Router ){}
+
+  constructor( public popoverController: PopoverController ){}
   @Input() titulo: string = '';
 
-  sesionDestroy(){
-    this.auth.logout();
-    this.router.navigateByUrl('/login');
+  async OpenPopOver( evento ) {
+    const popover = await this.popoverController.create({
+      component: PopoverbodyComponent,
+      event: evento,
+      mode: 'ios',
+      backdropDismiss: true
+    });
+    return await popover.present();
   }
 
 }
