@@ -6,14 +6,20 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { ComponentsModule } from '../../Components/components.module';
+import { ReporteInfoPage } from '../reporte-info/reporte-info.page';
+import { ReporteInfoPageModule } from '../reporte-info/reporte-info.module';
 
 @NgModule({
+  entryComponents: [
+    ReporteInfoPage
+  ],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    ReporteInfoPageModule
   ],
   declarations: [HomePage]
 })

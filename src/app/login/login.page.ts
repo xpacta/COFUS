@@ -45,23 +45,22 @@ export class LoginPage implements OnInit {
     this.auth.login( this.usuario )
     .subscribe( resp => {
       Swal.close();
-      if(this.SaveEmail){
+      if (this.SaveEmail){
         localStorage.setItem('email', this.usuario.email);
         localStorage.setItem('password', this.EncrypDecript.encrypt(this.usuario.password));
       }
       this.myJSONString = JSON.stringify(resp);
       this.myJSON = JSON.parse(this.myJSONString);
       console.log(this.myJSON.localId);
-
-      this.dataService.getUsuario(this.myJSON.localId).subscribe(data=>{
+      this.dataService.getUsuario(this.myJSON.localId).subscribe(data => {
         console.log(data);
         this.valor = JSON.stringify(data);
         this.valor = JSON.parse(this.valor);
-        localStorage.setItem('user',this.valor.Usuario);
-        localStorage.setItem('perfil',this.valor.Perfil);
-        localStorage.setItem('idOneSignal',this.valor.IdOneSignal);
+        localStorage.setItem('user', this.valor.Usuario);
+        localStorage.setItem('perfil', this.valor.Perfil);
+        localStorage.setItem('idOneSignal', this.valor.IdOneSignal);
         this.router.navigateByUrl('/home');
-      });  
+      });
 
     }, (err) => {
     console.log(err.error.error.message);

@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Informacion</ion-title>
+        <ion-button slot="end" color="medium" (click)="cerrar()">Cerrar</ion-button>
+
+    </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label>Fecha de cita</ion-label>
+        <ion-datetime disabled displayFormat="YYYY-MM-DD HH:mm" #fechacita></ion-datetime>
+    </ion-item>
+
+    <ion-list>
+        <!--  <ion-item>
+            <ion-label># CUFUS</ion-label>
+            <ion-input disabled #idcufus value=""></ion-input>
+        </ion-item>-->
+        <ion-item>
+            <ion-label>Unidad</ion-label>
+            <ion-input disabled #idunidad></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-list>
+                <ion-label>Fallas</ion-label>
+                <ion-item>
+                    <ion-input disabled #falla1 placeholder="Falla 1"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled #falla2 placeholder="Falla 2"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled #falla3 placeholder="Falla 3"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input disabled #falla4 placeholder="Falla 4"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-item>
+        <ion-item>
+            <ion-label>Criticidad</ion-label>
+            <ion-input disabled #criticidad></ion-input>
+        </ion-item>
+    </ion-list>
+    <ion-item>
+        <ion-label>Lugar de atención</ion-label>
+        <ion-input disabled #lugaratencion></ion-input>
+    </ion-item>
+</ion-content>
+<style>
+    ion-label {
+        opacity: 1 !important;
+    }
+</style>
