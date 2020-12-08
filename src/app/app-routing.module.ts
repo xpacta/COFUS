@@ -25,6 +25,7 @@ const routes: Routes = [
   { path: 'form-ac/:id', loadChildren: () => import('./pages/form-ac/form-ac.module').then( m => m.FormAcPageModule)},
   { path: 'form-mec/:id', loadChildren: () => import('./pages/form-mec/form-mec.module').then( m => m.FormMecPageModule)},
   { path: 'home', loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule) },
+  { path: 'form-edit', loadChildren: () => import('./pages/form-edit/form-edit.module').then( m => m.FormEditPageModule) },
 ];
 
 

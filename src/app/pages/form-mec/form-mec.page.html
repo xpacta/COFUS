@@ -32,7 +32,6 @@
         <ion-item>
             <ion-label>Estatus</ion-label>
             <ion-select #estatus placeholder="Seleccione">
-                <ion-select-option value="1">Por atender</ion-select-option>
                 <ion-select-option value="2">En proceso</ion-select-option>
                 <ion-select-option value="3">Refacción</ion-select-option>
                 <ion-select-option value="6">Validando reparación</ion-select-option>
@@ -42,6 +41,12 @@
             <ion-item>
                 <ion-label position="floating">Diagnóstico</ion-label>
                 <ion-textarea #diagnostico rows="6" cols="20"></ion-textarea>
+            </ion-item>
+        </ion-card-content>
+        <ion-card-content>
+            <ion-item>
+                <ion-label position="floating">Comentarios</ion-label>
+                <ion-textarea #comentarios rows="6" cols="20"></ion-textarea>
             </ion-item>
         </ion-card-content>
     </ion-card>

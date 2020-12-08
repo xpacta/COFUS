@@ -18,12 +18,12 @@ export class LoginPage implements OnInit {
   valor: any;
   myJSONString: any;
   myJSON: any;
-  constructor( private auth: AuthService, private router: Router,private dataService: DataService) { }
+  constructor( private auth: AuthService, private router: Router, private dataService: DataService) { }
 
   SaveEmail = false;
   ngOnInit() {
     this.usuario = new UsuarioModel();
-    if( localStorage.getItem('email')){
+    if ( localStorage.getItem('email')){
       this.usuario.email = localStorage.getItem('email');
       this.SaveEmail = true;
     }
@@ -44,22 +44,21 @@ export class LoginPage implements OnInit {
     this.auth.login( this.usuario )
     .subscribe( resp => {
       Swal.close();
-      if(this.SaveEmail){
+      if (this.SaveEmail){
         localStorage.setItem('email', this.usuario.email);
       }
-       this.myJSONString = JSON.stringify(resp);
-       this.myJSON= JSON.parse(this.myJSONString);
+      this.myJSONString = JSON.stringify(resp);
+      this.myJSON = JSON.parse(this.myJSONString);
       console.log(this.myJSON.localId);
-      
-      this.dataService.getUsuario(this.myJSON.localId).subscribe(data=>{
+      this.dataService.getUsuario(this.myJSON.localId).subscribe(data => {
         console.log(data);
-        this.valor=JSON.stringify(data);
-        this.valor=JSON.parse(this.valor);
-        localStorage.setItem('user',this.valor.Usuario);
-        localStorage.setItem('perfil',this.valor.Perfil);
-        localStorage.setItem('idOneSignal',this.valor.IdOneSignal);
+        this.valor = JSON.stringify(data);
+        this.valor = JSON.parse(this.valor);
+        localStorage.setItem('user', this.valor.Usuario);
+        localStorage.setItem('perfil', this.valor.Perfil);
+        localStorage.setItem('idOneSignal', this.valor.IdOneSignal);
         this.router.navigateByUrl('/home');
-      });  
+      });
 
     }, (err) => {
     console.log(err.error.error.message);

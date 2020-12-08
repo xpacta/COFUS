@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import {ActivatedRoute,Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { DataService } from '../../services/data.service';
 import * as moment from 'moment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -27,93 +27,89 @@ export class FormGmPage implements OnInit {
   arrayOfValues: any;
   arraysplit: any;
   id: string;
-  public reporteUpdate : FormGroup;
+  public reporteUpdate: FormGroup;
 
-  constructor(private renderer: Renderer2,private route: ActivatedRoute,private router: Router,private dataService: DataService,private formBuilder: FormBuilder) { 
+  constructor(private renderer: Renderer2, private route: ActivatedRoute, private router: Router, private dataService: DataService, private formBuilder: FormBuilder) {
     this.reporteUpdate = this.formBuilder.group({
       fechaCita: ['', Validators.required],
       lugaratencion: ['', Validators.required]
     });
   }
-  
   ngOnInit() {
-    
   }
-
-
   ionViewWillEnter(){
     this.route.paramMap.subscribe(paramMap => {
-       this.id=paramMap.get('id');
-    })
+       this.id = paramMap.get('id');
+    });
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
-    this.idunidad.nativeElement.value=this.arrayOfValues[0].IdUnidad;
-    this.arraysplit=this.arrayOfValues[0].Fallas.split("-");
-        this.falla1.nativeElement.value=this.arraysplit[0];
-        this.falla2.nativeElement.value=this.arraysplit[1];
-        this.falla3.nativeElement.value=this.arraysplit[2];
-        this.falla4.nativeElement.value=this.arraysplit[3];
-    this.criticidad.nativeElement.value=this.arrayOfValues[0].NCriticidad;
-    this.lugarjt.nativeElement.value=this.arrayOfValues[0].NLugar;
-    if(this.arrayOfValues[0].LugarDeAtencion=="6"){
-      this.ubicacion.nativeElement.value=this.arrayOfValues[0].Direccion;
+    this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+    this.falla1.nativeElement.value = this.arraysplit[0];
+    this.falla2.nativeElement.value = this.arraysplit[1];
+    this.falla3.nativeElement.value = this.arraysplit[2];
+    this.falla4.nativeElement.value = this.arraysplit[3];
+    this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+    this.lugarjt.nativeElement.value = this.arrayOfValues[0].NLugar;
+    if (this.arrayOfValues[0].LugarDeAtencion === '6'){
+      this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
       this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
     }
   }
 
-  enviar(){
-    if(this.reporteUpdate.valid){  
-      if(this.lugaratencion.nativeElement.value!=="6"){
-    const datos={
+  enviar(): void{
+    if (this.reporteUpdate.valid){
+      if (this.lugaratencion.nativeElement.value !== '6'){
+    const datos = {
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
       Direccion: this.ubicacion.nativeElement.value,
-      Estatus: "5",
-      Proceso: "2",
+      Estatus: '5',
+      Proceso: '2',
       IdOneSignal: this.arrayOfValues[0].IdOneSignal,
       IdUnidad: this.arrayOfValues[0].IdUnidad
     };
-    this.dataService.updateCita(datos).subscribe(data=>{
+    this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
       Swal.fire({
         allowOutsideClick: false,
-        icon: "success",
+        icon: 'success',
         text: 'Cita asignada correctamente'
       });
       this.router.navigateByUrl('/home');
     });
   }
   else{
-   
-    const datos={
+    const datos = {
       Id: this.arrayOfValues[0].Id,
       FechaCita: `${moment(this.fechacita.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fechacita.nativeElement.value).format('HH:mm')}`,
       Direccion: this.ubicacion.nativeElement.value,
-      Estatus: "8",
-      Proceso: "4",
+      Estatus: '8',
+      Proceso: '4',
       IdOneSignal: this.arrayOfValues[0].IdOneSignal,
       IdUnidad: this.arrayOfValues[0].IdUnidad
     };
-    this.dataService.updateCita(datos).subscribe(data=>{
+    this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
       Swal.fire({
         allowOutsideClick: false,
-        icon: "success",
+        icon: 'success',
         text: 'Orden generada correctamente'
       });
       this.router.navigateByUrl('/home');
     });
   }
   }else{
-    alert("Falta rellenar algunos campos");
+    alert('Falta rellenar algunos campos');
   }
   }
 
-  show(event){ 
-    console.log("Mensaje:"+event.target.value);
-    if(event.target.value==="6")
+  show(event){
+    if (event.target.value === '6'){
       this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
-    else
+    }
+    else{
       this.renderer.setStyle(this.direccion.nativeElement, 'display', 'none');
+    }
   }
 }

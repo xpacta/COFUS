@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import {ActivatedRoute,Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
@@ -25,45 +25,43 @@ export class FormCrPage implements OnInit {
   @ViewChild('criticidad', { read: ElementRef }) criticidad: ElementRef;
   @ViewChild('lugarjt', { read: ElementRef }) lugarjt: ElementRef;
   @ViewChild('lugaratencion', { read: ElementRef }) lugaratencion: ElementRef;
-  constructor(private renderer: Renderer2,private route: ActivatedRoute,private router: Router,private dataService: DataService) { }
+  constructor(private renderer: Renderer2, private route: ActivatedRoute, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
-    
   }
   ionViewWillEnter(){
     this.route.paramMap.subscribe(paramMap => {
-       this.id=paramMap.get('id');
-    })
-    
+       this.id = paramMap.get('id');
+    });
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
-    this.idcufus.nativeElement.value=this.arrayOfValues[0].Id;
-    this.fechacita.nativeElement.value=this.arrayOfValues[0].FechaDeCita;
-    this.fechacita.nativeElement.value=this.arrayOfValues[0].FechaDeCita;
-    this.idunidad.nativeElement.value=this.arrayOfValues[0].IdUnidad;
-    this.arraysplit=this.arrayOfValues[0].Fallas.split("-");
+    this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
+    this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
+    this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
+    this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
     console.log(this.arraysplit);
-    this.falla1.nativeElement.value=this.arraysplit[0];
-    this.falla2.nativeElement.value=this.arraysplit[1];
-    this.falla3.nativeElement.value=this.arraysplit[2];
-    this.falla4.nativeElement.value=this.arraysplit[3];
-    this.criticidad.nativeElement.value=this.arrayOfValues[0].NCriticidad;
-    
+    this.falla1.nativeElement.value = this.arraysplit[0];
+    this.falla2.nativeElement.value = this.arraysplit[1];
+    this.falla3.nativeElement.value = this.arraysplit[2];
+    this.falla4.nativeElement.value = this.arraysplit[3];
+    this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
   }
 
-  ngAfterViewInit() {
-    this.llegada.nativeElement.value=(new Date().toISOString());
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngAfterViewInit(): void {
+    this.llegada.nativeElement.value = (new Date().toISOString());
   }
 
-  enviar(){
-    const datos={
+  enviar(): void{
+    const datos = {
       Id: this.arrayOfValues[0].Id,
       FechaLlegada: `${moment(this.llegada.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.llegada.nativeElement.value).format('HH:mm')}`,
       Estatus: '2',
       Proceso: '3',
       IdUnidad: this.arrayOfValues[0].IdUnidad
     };
-    this.dataService.updateLlegada(datos).subscribe(data=>{
+    this.dataService.updateLlegada(datos).subscribe(data => {
       Swal.fire({
         allowOutsideClick: false,
         icon: 'success',
