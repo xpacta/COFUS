@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   private guardarToken( idToken: string ){
-    this.userToken =idToken;
+    this.userToken = idToken;
     localStorage.setItem('token', idToken);
   }
 
