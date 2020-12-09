@@ -14,7 +14,6 @@ export class RescateInfoPage implements OnInit {
   arrayOfValues: any;
   arraysplit: any;
   myArray: any;
-  
 
   @ViewChild('fecha', { read: ElementRef }) fecha: ElementRef;
   @ViewChild('idunidad', { read: ElementRef }) idunidad: ElementRef;
@@ -25,43 +24,43 @@ export class RescateInfoPage implements OnInit {
   @ViewChild('criticidad', { read: ElementRef }) criticidad: ElementRef;
   @ViewChild('ubicacion', { read: ElementRef }) ubicacion: ElementRef;
 
-  constructor(private renderer: Renderer2,private route: ActivatedRoute,private router: Router,private dataService: DataService) { }
+  constructor(private renderer: Renderer2, private route: ActivatedRoute, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
   }
   ionViewWillEnter(){
     this.route.paramMap.subscribe(paramMap => {
-       this.id=paramMap.get('id');
-    })
-    
-     this.myArray = this.route.snapshot.queryParamMap.get('myArray');
+       this.id = paramMap.get('id');
+    });
+
+    this.myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(this.myArray);
-    this.idunidad.nativeElement.value=this.arrayOfValues[0].IdUnidad;
-    this.arraysplit=this.arrayOfValues[0].Fallas.split("-");
-        this.falla1.nativeElement.value=this.arraysplit[0];
-        this.falla2.nativeElement.value=this.arraysplit[1];
-        this.falla3.nativeElement.value=this.arraysplit[2];
-        this.falla4.nativeElement.value=this.arraysplit[3];
-    this.ubicacion.nativeElement.value=this.arrayOfValues[0].Direccion;
-    this.criticidad.nativeElement.value=this.arrayOfValues[0].NCriticidad;      
-    
+    this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+    this.falla1.nativeElement.value = this.arraysplit[0];
+    this.falla2.nativeElement.value = this.arraysplit[1];
+    this.falla3.nativeElement.value = this.arraysplit[2];
+    this.falla4.nativeElement.value = this.arraysplit[3];
+    this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
+    this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
   }
+  // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit() {
-    this.fecha.nativeElement.value=(new Date().toISOString());
+    this.fecha.nativeElement.value = (new Date().toISOString());
   }
   enviar(){
-    const datos={
+    const datos = {
       Id: this.arrayOfValues[0].Id,
-      Estatus: "9",
+      Estatus: '9',
     };
-    this.dataService.updateRescate(datos).subscribe(data=>{
+    this.dataService.updateRescate(datos).subscribe(data => {
       console.log(data);
       const queryParams: any = {};
       queryParams.myArray = JSON.stringify(this.arrayOfValues);
       const navigationExtras: NavigationExtras = {
         queryParams
       };
-      this.router.navigate(['/form-rescate'],navigationExtras); 
+      this.router.navigate(['/form-rescate'], navigationExtras);
     });
   }
 

@@ -151,10 +151,23 @@ export class HomePage implements OnInit{
         FechaCita: array[0].FechaDeCita,
         Fallas: array[0].Fallas,
         Criticidad: array[0].NCriticidad,
-        LugarAtencion: array[0].NLugar
+        LugarAtencion: array[0].NLugar,
+        Estatus: array[0].Estatus
       }
     });
    await modal.present();
+  }
+
+  doRefresh(event) {
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      this.dataService.getPost()
+    .subscribe( (data: reporte[]) => {
+      this.reportes = data;
+      console.log(data);
+    } );
+      event.target.complete();
+    }, 2000);
   }
 
   editar(estatus, id){

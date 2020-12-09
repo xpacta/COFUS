@@ -62,11 +62,19 @@ export class FormCrPage implements OnInit {
       IdUnidad: this.arrayOfValues[0].IdUnidad
     };
     this.dataService.updateLlegada(datos).subscribe(data => {
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Entrada registrada correctamente'
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Entrada registrada correctamente'
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }

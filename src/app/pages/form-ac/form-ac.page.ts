@@ -49,11 +49,19 @@ export class FormAcPage implements OnInit {
     };
     this.dataService.updateCalidad(datos).subscribe(data => {
       console.log(data);
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Enviado correctamente'
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Enviado correctamente'
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }

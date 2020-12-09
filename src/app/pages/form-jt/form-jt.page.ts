@@ -61,11 +61,19 @@ export class FormJTPage implements OnInit {
 
     this.dataService.postReporte(datos).subscribe(data => {
       console.log(data);
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Reporte guardado correctamente' + ` #CUFUS: ${data}`
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Reporte guardado correctamente' + ` #CUFUS: ${data}`
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }

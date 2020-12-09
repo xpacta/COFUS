@@ -71,11 +71,19 @@ export class FormGmPage implements OnInit {
     };
     this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Cita asignada correctamente'
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Cita asignada correctamente'
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }
@@ -91,11 +99,19 @@ export class FormGmPage implements OnInit {
     };
     this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Orden generada correctamente'
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Orden generada correctamente'
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }

@@ -61,11 +61,19 @@ export class FormMecPage implements OnInit {
     };
     this.dataService.updateDiagnostico(datos).subscribe(data => {
       console.log(data);
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: 'Diagnóstico guardado correctamente'
-      });
+      if (data !== 0){
+        Swal.fire({
+          allowOutsideClick: false,
+          icon: 'success',
+          text: 'Diagnostico guardado correctamente'
+        });
+      }else{
+        Swal.fire({
+          allowOutsideClick: true,
+          icon: 'error',
+          text: 'Ocurrió un error. Vuelva a intentarlo.'
+        });
+      }
       this.router.navigateByUrl('/home');
     });
   }
