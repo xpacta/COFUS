@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
-import { PopoverbodyComponent } from '../popoverbody/popoverbody.component';
+import { PopoverSessionComponent } from '../popoverSession/popoverSession.component';
+import { PopoverNotificationsComponent } from '../popover-notifications/popover-notifications.component';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,19 @@ export class HeaderComponent {
   constructor( public popoverController: PopoverController ){}
   @Input() titulo: string = '';
 
-  async OpenPopOver( evento ) {
+  async OpenPopNotifications( evento ) {
     const popover = await this.popoverController.create({
-      component: PopoverbodyComponent,
+      component: PopoverNotificationsComponent,
+      event: evento,
+      mode: 'ios',
+      backdropDismiss: true
+    });
+    return await popover.present();
+  }
+
+  async OpenPopSession( evento ) {
+    const popover = await this.popoverController.create({
+      component: PopoverSessionComponent,
       event: evento,
       mode: 'ios',
       backdropDismiss: true

@@ -24,6 +24,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByName('white');
       this.splashScreen.hide();
       this.notiPush.configuracionInicial();
     });

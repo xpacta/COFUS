@@ -1,18 +1,15 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons [hidden]="titulo === 'Reportes'" slot="start">
-            <ion-back-button defaultHref="/" color="primary"></ion-back-button>
-        </ion-buttons>
-        <ion-title class="ion-text-capitalize">{{ titulo }}</ion-title>
-        <ion-buttons slot="secondary">
-            <ion-button (click)="OpenPopOver( $event )">
-                <ion-icon name="notifications-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-        <ion-buttons slot="secondary">
-            <ion-button (click)="OpenPopOver( $event )">
-                <ion-icon name="person-circle-outline"></ion-icon>
-            </ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
+<ion-toolbar>
+    <ion-buttons [hidden]="titulo === 'Reportes'" slot="start">
+        <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-capitalize">{{ titulo }}</ion-title>
+    <ion-buttons slot="secondary">
+        <ion-button expand="full" (click)="OpenPopNotifications( $event )">
+            <ion-icon class="iconMenu" name="notifications-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" (click)="OpenPopSession( $event )">
+            <ion-icon class="iconMenu" name="person-circle-outline"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+</ion-toolbar>

@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 
 import { HeaderComponent } from './header/header.component';
-import { PopoverbodyComponent } from './popoverbody/popoverbody.component';
+import { PopoverSessionComponent } from './popoverSession/popoverSession.component';
 
 @NgModule({
-  declarations: [HeaderComponent, PopoverbodyComponent],
-  exports: [HeaderComponent, PopoverbodyComponent],
+  declarations: [HeaderComponent, PopoverSessionComponent],
+  exports: [HeaderComponent, PopoverSessionComponent],
   imports: [
     CommonModule,
     IonicModule

@@ -25,7 +25,11 @@ export class LoginPage implements OnInit {
     this.usuario = new UsuarioModel();
     if ( localStorage.getItem('email') ){
       this.usuario.email = localStorage.getItem('email');
-      this.usuario.password = this.EncrypDecript.decrypt(localStorage.getItem('password'));
+      if (localStorage.getItem('password')){
+        this.usuario.password = this.EncrypDecript.decrypt(localStorage.getItem('password'));
+      }else{
+        this.usuario.password = '';
+      }
       this.SaveEmail = true;
     }
   }

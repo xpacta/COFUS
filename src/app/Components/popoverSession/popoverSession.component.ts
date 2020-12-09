@@ -4,10 +4,10 @@ import { AuthService } from '../../services/auth.service';
 import { PopoverController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-popoverbody',
-  templateUrl: './popoverbody.component.html'
+  selector: 'app-popoverSession',
+  templateUrl: './popoverSession.component.html'
 })
-export class PopoverbodyComponent implements OnInit {
+export class PopoverSessionComponent implements OnInit {
 
   constructor(private auth: AuthService, private router: Router, public popoverController: PopoverController) { }
 
