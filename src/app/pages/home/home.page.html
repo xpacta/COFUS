@@ -58,7 +58,7 @@
                         <p> Citado: {{reportes.FechaDeCita}}</p>
                     </ng-template>
                 </ion-label>
-                <ion-button *ngIf="perfil==='0' && reportes.Estatus==='1'" (click)="editar(reportes.Estatus,reportes.Id)">
+                <ion-button class="iconEdit" *ngIf="perfil==='0' && reportes.Estatus==='1' && reportes.IdOneSignal === IdOneSignal" (click)="editar(reportes.Estatus,reportes.Id)">
                     <ion-icon name="create-outline"></ion-icon>
                 </ion-button>
             </ion-item>
@@ -81,7 +81,7 @@
                             <p> Citado: {{reportes.FechaDeCita}}</p>
                         </ng-template>
                     </ion-label>
-                    <ion-button *ngIf="perfil==='0' && reportes.Estatus==='1'" (click)="editar(reportes.Estatus,reportes.Id)">
+                    <ion-button class="iconEdit" *ngIf="perfil==='0' && reportes.Estatus==='1' && reportes.IdOneSignal === IdOneSignal" (click)="editar(reportes.Estatus,reportes.Id)">
                         <ion-icon name="create-outline"></ion-icon>
                     </ion-button>
                 </ion-item>

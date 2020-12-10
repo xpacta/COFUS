@@ -22,6 +22,7 @@ interface reporte {
   NProceso: string;
   NCriticidad: string;
   NLugar: string;
+  IdOneSignal: string;
 }
 
 @Component({
@@ -45,6 +46,7 @@ export class HomePage implements OnInit{
   reportes: reporte[] = [];
   usuario: string;
   perfil: any;
+  IdOneSignal: any;
 
   public getHtmlWithBypassedSecurity(code: string): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(code);
@@ -52,7 +54,8 @@ export class HomePage implements OnInit{
   ngOnInit(){
     this.usuario = localStorage.getItem('user');
     this.perfil = localStorage.getItem('perfil');
-
+    this.IdOneSignal = localStorage.getItem('idOneSignal');
+    //console.log("usuario: "+localStorage.getItem('idOneSignal'));
     this.indicador = 1;
 
     this.dataService.getPost()
@@ -140,6 +143,34 @@ export class HomePage implements OnInit{
     if (this.iModal === 0){
     this.openInfo(this.arrayOfValue);
     }
+    /*Para pruebas
+    if (estatus === '1'){ // Por atender
+      this.router.navigate(['/form-gm', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '5' ){// Citado
+      this.router.navigate(['/form-cr', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '2' ){// En proceso
+      this.router.navigate(['/form-mec', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '3' ){// Por refaccion
+      this.router.navigate(['/form-mec', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '6' ){// Validando
+      this.router.navigate(['/form-ac', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '4' ){// Disponible
+      this.router.navigate(['/rescate-resol', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '8' ){// Rescate
+      this.router.navigate(['/rescate-info', id], navigationExtras); this.iModal = 1;
+    }
+    if (estatus === '9'){// Atendiendo rescate
+      this.router.navigate(['/form-rescate'], navigationExtras); this.iModal = 1;
+    }
+    if (this.iModal === 0){
+    this.openInfo(this.arrayOfValue);
+    }*/
   }
 
   async openInfo(array){

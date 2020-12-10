@@ -21,6 +21,7 @@ export class FormRescatePage implements OnInit {
   @ViewChild('idcufus', { read: ElementRef }) idcufus: ElementRef;
   @ViewChild('direccion', { read: ElementRef }) direccion: ElementRef;
   @ViewChild('diagnostico', { read: ElementRef }) diagnostico: ElementRef;
+  @ViewChild('comentarios', { read: ElementRef }) comentarios: ElementRef;
 
   constructor(private renderer: Renderer2,private route: ActivatedRoute,private router: Router,private dataService: DataService) { }
 
@@ -48,7 +49,9 @@ export class FormRescatePage implements OnInit {
       Estatus:'9',
       Fecha: `${moment(this.fecha.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fecha.nativeElement.value).format('HH:mm')}`,
       Diagnostico: this.diagnostico.nativeElement.value,
-      IdUnidad: this.arrayOfValues[0].IdUnidad
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
+      Comentarios: this.comentarios.nativeElement.value,
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateDiagnostico(datos).subscribe(data => {
       if (data !== 0){
@@ -78,7 +81,9 @@ export class FormRescatePage implements OnInit {
       Estatus: '1',
       Fecha: `${moment(this.fecha.nativeElement.value).format('YYYY-MM-DD')} ${moment(this.fecha.nativeElement.value).format('HH:mm')}`,
       Diagnostico: this.diagnostico.nativeElement.value,
-      IdUnidad: this.arrayOfValues[0].IdUnidad
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
+      Comentarios: this.comentarios.nativeElement.value,
+      IdOneSignal: this.arrayOfValues[0].IdOneSignal
     };
     this.dataService.updateDiagnostico(datos).subscribe(data => {
       if (data !== 0){
