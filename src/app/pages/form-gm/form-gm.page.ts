@@ -23,6 +23,8 @@ export class FormGmPage implements OnInit {
   @ViewChild('lugarjt', { read: ElementRef }) lugarjt: ElementRef;
   @ViewChild('lugaratencion', { read: ElementRef }) lugaratencion: ElementRef;
   @ViewChild('ubicacion', { read: ElementRef }) ubicacion: ElementRef;
+  @ViewChild('iditemlugar', { read: ElementRef }) iditemlugar: ElementRef;
+  @ViewChild('iditemfecha', { read: ElementRef }) iditemfecha: ElementRef;
 
   arrayOfValues: any;
   arraysplit: any;
@@ -116,6 +118,12 @@ export class FormGmPage implements OnInit {
     });
   }
   }else{
+    if (this.reporteUpdate.value.fechaCita==""){
+      this.iditemfecha.nativeElement.classList.add("invalid");
+    }
+    if (this.reporteUpdate.value.lugaratencion==""){
+      this.iditemlugar.nativeElement.classList.add("invalid");
+    }
     alert('Falta rellenar algunos campos');
   }
   }

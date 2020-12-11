@@ -55,6 +55,7 @@ export class HomePage implements OnInit{
     this.usuario = localStorage.getItem('user');
     this.perfil = localStorage.getItem('perfil');
     this.IdOneSignal = localStorage.getItem('idOneSignal');
+    console.log("idone: "+ this.IdOneSignal);
     //console.log("usuario: "+localStorage.getItem('idOneSignal'));
     this.indicador = 1;
 

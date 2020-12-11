@@ -21,6 +21,11 @@ export class FormJTPage implements OnInit {
   @ViewChild('selectLugar', { read: ElementRef }) lugarAtencion: ElementRef;
   @ViewChild('selectCriticidad', { read: ElementRef }) selectCriticidad: ElementRef;
   @ViewChild('idVehiculo', { read: ElementRef }) idVehiculo: ElementRef;
+  @ViewChild('iditemvehiculo', { read: ElementRef }) iditemvehiculo: ElementRef;
+  @ViewChild('idoperador', { read: ElementRef }) idoperador: ElementRef;
+  @ViewChild('iditemfalla', { read: ElementRef }) iditemfalla: ElementRef;
+  @ViewChild('iditemcriticidad', { read: ElementRef }) iditemcriticidad: ElementRef;
+  @ViewChild('iditemlugar', { read: ElementRef }) iditemlugar: ElementRef;
   @ViewChild('contactoOperador', { read: ElementRef }) contactoOperador: ElementRef;
   @ViewChild('otrodomicilio', { read: ElementRef }) otrodomicilio: ElementRef;
 
@@ -46,7 +51,9 @@ export class FormJTPage implements OnInit {
   }
 
   onClick(){
+    console.log(this.reporteInicial.value.fallaUno);
     if (this.reporteInicial.valid){
+      
     let fallas: string;
     fallas = `${this.fallaUno.nativeElement.value}-${this.fallaDos.nativeElement.value}-${this.fallaTres.nativeElement.value}-${this.fallaCuatro.nativeElement.value}`;
     // fallas=fallas.replace(" ","-");
@@ -78,6 +85,21 @@ export class FormJTPage implements OnInit {
     });
   }
   else{
+    if (this.reporteInicial.value.idVehiculo==""){
+      this.iditemvehiculo.nativeElement.classList.add("invalid");
+    }
+    if (this.reporteInicial.value.fallaUno==""){
+      this.iditemfalla.nativeElement.classList.add("invalid");
+    }
+    if (this.reporteInicial.value.selectCriticidad==""){
+      this.iditemcriticidad.nativeElement.classList.add("invalid");
+    }
+    if (this.reporteInicial.value.selectLugar==""){
+      this.iditemlugar.nativeElement.classList.add("invalid");
+    }
+    if (this.reporteInicial.value.contactoOperador==""){
+      this.idoperador.nativeElement.classList.add("invalid");
+    }
     alert('Falta rellenar algunos campos');
   }
   }

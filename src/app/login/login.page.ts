@@ -63,6 +63,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('user', this.valor.Usuario);
         localStorage.setItem('perfil', this.valor.Perfil);
         localStorage.setItem('idOneSignal', this.valor.IdOneSignal);
+        
         this.router.navigateByUrl('/home');
       });
 
