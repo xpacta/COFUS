@@ -41,7 +41,7 @@
         </ion-item>
         <ion-item #iditemlugar [class.valid]="reporteUpdate.controls.lugaratencion.valid">
             <ion-label>Lugar de atención</ion-label>
-            <ion-select #lugaratencion formControlName="lugaratencion" (ionChange)="show($event)" placeholder="Seleccione">
+            <ion-select interface="popover" #lugaratencion formControlName="lugaratencion" (ionChange)="show($event)" placeholder="Seleccione">
                 <ion-select-option value="3">Taller</ion-select-option>
                 <ion-select-option value="4">Encierro</ion-select-option>
                 <ion-select-option value="5">Taller externo</ion-select-option>

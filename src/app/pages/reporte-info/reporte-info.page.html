@@ -47,13 +47,12 @@
         <ion-label>Lugar de atención</ion-label>
         <ion-input disabled #lugaratencion></ion-input>
     </ion-item><br>
-    <ion-item class="">Progreso</ion-item>
+    <ion-item class="">Proceso</ion-item>
     <ion-item class="">
-        <ion-progress-bar #bar></ion-progress-bar>
+        <div class="progress-wrapper">
+            <div class="progress-bar" [style.width]="porcentaje + '%'">
+                {{porcentaje}}%
+            </div>
+        </div>
     </ion-item>
 </ion-content>
-<style>
-    ion-label {
-        opacity: 1 !important;
-    }
-</style>

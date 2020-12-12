@@ -39,7 +39,7 @@
             </ion-item>
             <ion-item #iditemcriticidad [class.valid]="reporteInicial.controls.selectCriticidad.valid">
                 <ion-label>Criticidad</ion-label>
-                <ion-select formControlName="selectCriticidad" #selectCriticidad placeholder="Seleccione">
+                <ion-select interface="popover" formControlName="selectCriticidad" #selectCriticidad placeholder="Seleccione">
                     <ion-select-option value="3">No operable</ion-select-option>
                     <ion-select-option value="2">Operable alto riesgo</ion-select-option>
                     <ion-select-option value="1">Operable bajo riesgo</ion-select-option>
@@ -47,7 +47,7 @@
             </ion-item>
             <ion-item #iditemlugar [class.valid]="reporteInicial.controls.selectLugar.valid">
                 <ion-label>Lugar de atención</ion-label>
-                <ion-select formControlName="selectLugar" #selectLugar (ionChange)="show($event)" placeholder="Seleccione">
+                <ion-select interface="popover" formControlName="selectLugar" #selectLugar (ionChange)="show($event)" placeholder="Seleccione">
                     <ion-select-option value="3">Taller</ion-select-option>
                     <ion-select-option value="4">Encierro</ion-select-option>
                     <ion-select-option value="5">Taller externo</ion-select-option>
