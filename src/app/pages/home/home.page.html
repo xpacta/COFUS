@@ -42,26 +42,27 @@
 
     <ion-list #menu>
         <ng-container *ngIf="indicador == '1'; else elseEstatus">
-            <ion-item *ngFor="let reportes of reportes">
+            <ion-card *ngFor="let reportes of reportes">
+                <ion-item>
+                    <ion-avatar slot="start">
+                        <img src="../assets/icon bus.png" />
+                    </ion-avatar>
+                    <ion-label (click)="redireccionar(reportes.Estatus,reportes.Id)">
+                        <h2>#: {{ reportes.Id }}, Unidad: {{reportes.IdUnidad}}
+                            <p style="color:red;">{{ reportes.NEstatus}}</p>
+                        </h2>
 
-                <ion-avatar slot="start">
-                    <img src="../assets/icon bus.png" />
-                </ion-avatar>
-                <ion-label (click)="redireccionar(reportes.Estatus,reportes.Id)">
-                    <h2>#: {{ reportes.Id }}, Unidad: {{reportes.IdUnidad}}
-                        <p style="color:red;">{{ reportes.NEstatus}}</p>
-                    </h2>
-
-                    <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
-                    <p *ngIf="reportes.Estatus == '1';  else elseCitado">En espera</p>
-                    <ng-template #elseCitado>
-                        <p> Citado: {{reportes.FechaDeCita}}</p>
-                    </ng-template>
-                </ion-label>
-                <ion-button class="iconEdit" *ngIf="perfil==='0' && reportes.Estatus==='1' && reportes.IdOneSignal === IdOneSignal" (click)="editar(reportes.Estatus,reportes.Id)">
-                    <ion-icon name="create-outline"></ion-icon>
-                </ion-button>
-            </ion-item>
+                        <p>Desde: {{reportes.FechaDeLevantamiento}}</p>
+                        <p *ngIf="reportes.Estatus == '1';  else elseCitado">En espera</p>
+                        <ng-template #elseCitado>
+                            <p> Citado: {{reportes.FechaDeCita}}</p>
+                        </ng-template>
+                    </ion-label>
+                    <ion-button class="iconEdit" *ngIf="perfil==='0' && reportes.Estatus==='1' && reportes.IdOneSignal === IdOneSignal" (click)="editar(reportes.Estatus,reportes.Id)">
+                        <ion-icon name="create-outline"></ion-icon>
+                    </ion-button>
+                </ion-item>
+            </ion-card>
         </ng-container>
         <!---->
         <ng-template #elseEstatus>

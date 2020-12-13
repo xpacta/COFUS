@@ -6,6 +6,7 @@
     <ion-buttons slot="secondary">
         <ion-button expand="full" (click)="OpenPopNotifications( $event )">
             <ion-icon class="iconMenu" name="notifications-outline"></ion-icon>
+            <ion-badge [hidden]="unread === 0" [class.badge-one]="unread < 10" [class.badge-two]="unread >= 10" color="danger">{{ unread }}</ion-badge>
         </ion-button>
 
         <ion-button expand="block" (click)="OpenPopSession( $event )">

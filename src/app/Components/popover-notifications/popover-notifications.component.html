@@ -1,3 +1,13 @@
-<ion-item>
-    <ion-label></ion-label>
-</ion-item>
+<ion-content>
+    <ion-list class="ion-align-items-center" scrolly="true">
+        <ion-list-header>
+            <ion-label>Notificaciones</ion-label>
+        </ion-list-header>
+        <ion-item *ngIf="Notificaciones.mensajes.length < 1">
+            <ion-label>sin notificaciones</ion-label>
+        </ion-item>
+        <ion-item *ngFor="let Notificacion of Notificaciones.mensajes; let i = index" scroll="true" (click)="onClick( Notificacion.additionalData.RLink, Notificacion.additionalData.vista, Notificacion.notificationID )">
+            <p><strong>{{ Notificacion.title }}</strong><br>{{ Notificacion.body }}</p>
+        </ion-item>
+    </ion-list>
+</ion-content>
