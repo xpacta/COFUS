@@ -51,8 +51,9 @@ export class ReporteInfoPage implements OnInit {
     if (this.Estatus === '7'){ this.porcentaje = '1.0'; }
     if (this.Estatus === '8'){ this.porcentaje = '0.3'; }
     if (this.Estatus === '9'){ this.porcentaje = '0.5'; }
-
-    this.bar.nativeElement.value = this.porcentaje;
+    this.porcentaje=this.porcentaje*100;  
+  
+    //this.bar.nativeElement.value = this.porcentaje;
 
   }
   cerrar(){
