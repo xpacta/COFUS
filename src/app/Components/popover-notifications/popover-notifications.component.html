@@ -7,7 +7,12 @@
             <ion-label>sin notificaciones</ion-label>
         </ion-item>
         <ion-item *ngFor="let Notificacion of Notificaciones.mensajes; let i = index" scroll="true" (click)="onClick( Notificacion.additionalData.RLink, Notificacion.additionalData.vista, Notificacion.notificationID )">
-            <p><strong>{{ Notificacion.title }}</strong><br>{{ Notificacion.body }}</p>
+            <ion-item *ngIf="!Notificacion.additionalData.vista" color="primary">
+                <p><strong>{{ Notificacion.title }}</strong><br>{{ Notificacion.body }}</p>
+            </ion-item>
+            <ion-item *ngIf="Notificacion.additionalData.vista">
+                <p><strong>{{ Notificacion.title }}</strong><br>{{ Notificacion.body }}</p>
+            </ion-item>
         </ion-item>
     </ion-list>
 </ion-content>
