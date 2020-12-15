@@ -17,6 +17,9 @@ export class ReporteInfoPage implements OnInit {
   @ViewChild('criticidad', { read: ElementRef }) criticidad: ElementRef;
   @ViewChild('lugaratencion', { read: ElementRef }) lugaratencion: ElementRef;
   @ViewChild('bar', { read: ElementRef }) bar: ElementRef;
+  @ViewChild('diagnostico', { read: ElementRef }) diagnostico: ElementRef;
+  @ViewChild('comentarios', { read: ElementRef }) comentarios: ElementRef;
+  @ViewChild('operador', { read: ElementRef }) operador: ElementRef;
 
   @Input() IdUnidad;
   @Input() IdCufus;
@@ -25,9 +28,12 @@ export class ReporteInfoPage implements OnInit {
   @Input() Criticidad;
   @Input() LugarAtencion;
   @Input() Estatus;
+  @Input() Diagnostico;
+  @Input() Comentarios;
+  @Input() Operador;
   arraysplit: any;
   porcentaje: any;
-
+  
   constructor(private modalctrl: ModalController) { }
 
   ngOnInit() {
@@ -42,6 +48,13 @@ export class ReporteInfoPage implements OnInit {
     this.falla4.nativeElement.value = this.arraysplit[3];
     this.criticidad.nativeElement.value = this.Criticidad;
     this.lugaratencion.nativeElement.value = this.LugarAtencion;
+    if(this.Estatus === "4" || this.Estatus === "7"){
+    this.diagnostico.nativeElement.value = this.Diagnostico;
+    this.comentarios.nativeElement.value = this.Comentarios;
+    if(this.Estatus === "7")
+    this.operador.nativeElement.value = this.Operador;
+  }
+
     if (this.Estatus === '1'){ this.porcentaje = '0.1'; }
     if (this.Estatus === '2'){ this.porcentaje = '0.5'; }
     if (this.Estatus === '3'){ this.porcentaje = '0.5'; }

@@ -46,7 +46,20 @@
     <ion-item>
         <ion-label>Lugar de atención</ion-label>
         <ion-input disabled #lugaratencion></ion-input>
-    </ion-item><br>
+    </ion-item>
+    <ion-item *ngIf="Estatus == 4 || Estatus == 7">
+        <ion-label>Diagnóstico</ion-label>
+        <ion-input disabled #diagnostico></ion-input>
+    </ion-item>
+    <ion-item *ngIf="Estatus == 4 || Estatus == 7">
+        <ion-label>Comentarios</ion-label>
+        <ion-input disabled #comentarios></ion-input>
+    </ion-item>
+    <ion-item *ngIf="Estatus == 7">
+        <ion-label>Operador</ion-label>
+        <ion-input disabled #operador></ion-input>
+    </ion-item>
+    <br>
     <ion-item class="">Proceso</ion-item>
     <ion-item class="">
         <div class="progress-wrapper">

@@ -183,7 +183,10 @@ export class HomePage implements OnInit{
         Fallas: array[0].Fallas,
         Criticidad: array[0].NCriticidad,
         LugarAtencion: array[0].NLugar,
-        Estatus: array[0].Estatus
+        Estatus: array[0].Estatus,
+        Diagnostico: array[0].Diagnostico,
+        Comentarios: array[0].Comentarios,
+        Operador: array[0].Operador
       }
     });
    await modal.present();

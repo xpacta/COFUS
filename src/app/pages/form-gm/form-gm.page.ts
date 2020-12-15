@@ -92,7 +92,8 @@ export class FormGmPage implements OnInit {
       Estatus: '5',
       Proceso: '2',
       IdOneSignal: this.arrayOfValues[0].IdOneSignal,
-      IdUnidad: this.arrayOfValues[0].IdUnidad
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
+      LugarDeAtencion: this.lugaratencion.nativeElement.value
     };
     this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
@@ -120,7 +121,8 @@ export class FormGmPage implements OnInit {
       Estatus: '8',
       Proceso: '4',
       IdOneSignal: this.arrayOfValues[0].IdOneSignal,
-      IdUnidad: this.arrayOfValues[0].IdUnidad
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
+      LugarDeAtencion: this.lugaratencion.nativeElement.value
     };
     this.dataService.updateCita(datos).subscribe(data => {
       console.log(data);
