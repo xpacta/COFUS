@@ -3,7 +3,7 @@
     <name>CUFUS</name>
     <description>Aplicación para el manejo del control de unidades en taller, esta aplicación es para uso interno de la empresa Settepi unidad de negocio Tijuana.</description>
     <author email="aruelas@settepi.com" href="http://settepitijuana.ddns.net/nosotros">Equipo de desarrollo</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
