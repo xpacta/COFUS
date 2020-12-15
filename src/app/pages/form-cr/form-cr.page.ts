@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 export class FormCrPage implements OnInit {
 
   private id: any;
+  private datos1: any;
   arrayOfValues: any;
   arraysplit: any;
   @ViewChild('idcufus', { read: ElementRef }) idcufus: ElementRef;
@@ -35,6 +36,13 @@ export class FormCrPage implements OnInit {
     });
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
+    if (this.arrayOfValues === null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
     this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
     this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
     this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
@@ -46,6 +54,20 @@ export class FormCrPage implements OnInit {
     this.falla3.nativeElement.value = this.arraysplit[2];
     this.falla4.nativeElement.value = this.arraysplit[3];
     this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+    } );
+    }else{
+      this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
+      this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
+      this.fechacita.nativeElement.value = this.arrayOfValues[0].FechaDeCita;
+      this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+      this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+      console.log(this.arraysplit);
+      this.falla1.nativeElement.value = this.arraysplit[0];
+      this.falla2.nativeElement.value = this.arraysplit[1];
+      this.falla3.nativeElement.value = this.arraysplit[2];
+      this.falla4.nativeElement.value = this.arraysplit[3];
+      this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+    }
   }
 
   // tslint:disable-next-line: use-lifecycle-interface

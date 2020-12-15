@@ -55,8 +55,7 @@ export class HomePage implements OnInit{
     this.usuario = localStorage.getItem('user');
     this.perfil = localStorage.getItem('perfil');
     this.IdOneSignal = localStorage.getItem('idOneSignal');
-    console.log("idone: "+ this.IdOneSignal);
-    //console.log("usuario: "+localStorage.getItem('idOneSignal'));
+    console.log('idone: ' + this.IdOneSignal);
     this.indicador = 1;
 
     this.dataService.getPost()
@@ -68,7 +67,7 @@ export class HomePage implements OnInit{
       console.log(data);
     } );
 
-    this.dataService.getResportes()
+    this.dataService.getReportes(1)
     .subscribe( data1 => {
       // console.log(data1);
     } );
@@ -91,7 +90,7 @@ export class HomePage implements OnInit{
      // console.log(data);
     } );
 
-    this.dataService.getResportes()
+    this.dataService.getReportes(1)
     .subscribe( data1 => {
      //  console.log(data1);
     } );

@@ -45,6 +45,14 @@ export class FormGmPage implements OnInit {
     });
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
+    if (this.arrayOfValues === null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
+    console.log(this.arrayOfValues[0].IdUnidad);
     this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
     this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
     this.falla1.nativeElement.value = this.arraysplit[0];
@@ -56,6 +64,21 @@ export class FormGmPage implements OnInit {
     if (this.arrayOfValues[0].LugarDeAtencion === '6'){
       this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
       this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
+    }
+    } );
+    }else{
+      this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+      this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+      this.falla1.nativeElement.value = this.arraysplit[0];
+      this.falla2.nativeElement.value = this.arraysplit[1];
+      this.falla3.nativeElement.value = this.arraysplit[2];
+      this.falla4.nativeElement.value = this.arraysplit[3];
+      this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+      this.lugarjt.nativeElement.value = this.arrayOfValues[0].NLugar;
+      if (this.arrayOfValues[0].LugarDeAtencion === '6'){
+      this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
+      this.renderer.setStyle(this.direccion.nativeElement, 'display', '');
+    }
     }
   }
 
@@ -118,11 +141,11 @@ export class FormGmPage implements OnInit {
     });
   }
   }else{
-    if (this.reporteUpdate.value.fechaCita==""){
-      this.iditemfecha.nativeElement.classList.add("invalid");
+    if (this.reporteUpdate.value.fechaCita === ''){
+      this.iditemfecha.nativeElement.classList.add('invalid');
     }
-    if (this.reporteUpdate.value.lugaratencion==""){
-      this.iditemlugar.nativeElement.classList.add("invalid");
+    if (this.reporteUpdate.value.lugaratencion === ''){
+      this.iditemlugar.nativeElement.classList.add('invalid');
     }
     alert('Falta rellenar algunos campos');
   }

@@ -12,8 +12,8 @@ export class DataService {
     return this.http.get('http://settepitijuana.ddns.net:8080/CUFUS/');
   }
 
-  getResportes() {
-    return this.http.get('http://settepitijuana.ddns.net:8080/CUFUS/Index.php?ReporteId=2020');
+  getReportes(id) {
+    return this.http.get('http://settepitijuana.ddns.net:8080/CUFUS/Index.php?ReporteId=' + id);
   }
 
   getUsuario(id) {

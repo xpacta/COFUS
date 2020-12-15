@@ -8,7 +8,7 @@ import { PopoverController } from '@ionic/angular';
   templateUrl: './popoverSession.component.html'
 })
 export class PopoverSessionComponent implements OnInit {
-
+  perfil = localStorage.get('perfil');
   constructor(private auth: AuthService, private router: Router, public popoverController: PopoverController) { }
 
   ngOnInit() {}
@@ -18,6 +18,4 @@ export class PopoverSessionComponent implements OnInit {
     this.router.navigateByUrl('/login');
     this.popoverController.dismiss();
   }
-
-
 }

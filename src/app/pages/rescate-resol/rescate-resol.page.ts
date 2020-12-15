@@ -16,6 +16,7 @@ export class RescateResolPage implements OnInit {
   @ViewChild('idunidad', { read: ElementRef }) idunidad: ElementRef;
   @ViewChild('fecha', { read: ElementRef }) fecha: ElementRef;
   @ViewChild('operador', { read: ElementRef }) operador: ElementRef;
+
   constructor(private renderer: Renderer2, private route: ActivatedRoute, private router: Router, private dataService: DataService) { }
 
   ngOnInit() {
@@ -28,14 +29,28 @@ export class RescateResolPage implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
        this.id = paramMap.get('id');
     });
-
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
     console.log(this.arrayOfValues);
+    if (this.arrayOfValues === null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
+    console.log(this.arrayOfValues[0].IdUnidad);
     this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    } );
+    }else{
+      this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    }
   }
 
-  enviar(){
+  enviar(): void{
+    if (this.operador.nativeElement.value === '') {
+      alert('Debe agregar el nombre del operador o responsable de la unidad');
+    }else{
     const datos = {
       Id: this.arrayOfValues[0].Id,
       Operador: this.operador.nativeElement.value,
@@ -62,5 +77,5 @@ export class RescateResolPage implements OnInit {
       this.router.navigateByUrl('/home');
     });
   }
-
+  }
 }

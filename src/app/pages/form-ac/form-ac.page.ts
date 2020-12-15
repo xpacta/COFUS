@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import Swal from 'sweetalert2';
 
@@ -31,6 +31,14 @@ export class FormAcPage implements OnInit {
 
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
+    if(this.arrayOfValues===null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
+    console.log(this.arrayOfValues[0].IdUnidad);
     this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
     this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
     this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
@@ -38,15 +46,32 @@ export class FormAcPage implements OnInit {
     this.falla2.nativeElement.value = this.arraysplit[1];
     this.falla3.nativeElement.value = this.arraysplit[2];
     this.falla4.nativeElement.value = this.arraysplit[3];
-    this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    // this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    } );
+    }else{
+    this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
+    this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+    this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+    this.falla1.nativeElement.value = this.arraysplit[0];
+    this.falla2.nativeElement.value = this.arraysplit[1];
+    this.falla3.nativeElement.value = this.arraysplit[2];
+    this.falla4.nativeElement.value = this.arraysplit[3];
+    // this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    }
   }
   enviar(): void{
+    if (this.estatus.nativeElement.value === ''){
+      alert('Falta rellenar campo de estatus');
+    }else{
+    const queryParams: any = {};
+    queryParams.myArray = JSON.stringify(this.arrayOfValues);
     const datos = {
       Id: this.arrayOfValues[0].Id,
       Estatus: this.estatus.nativeElement.value,
       Comentarios: this.comentarios.nativeElement.value,
-      IdUnidad: this.arrayOfValues[0].IdUnidad
+      IdUnidad: this.arrayOfValues[0].IdUnidad,
     };
+    console.log(datos);
     this.dataService.updateCalidad(datos).subscribe(data => {
       console.log(data);
       if (data !== 0){
@@ -65,5 +90,5 @@ export class FormAcPage implements OnInit {
       this.router.navigateByUrl('/home');
     });
   }
-
+  }
 }

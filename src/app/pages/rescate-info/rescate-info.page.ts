@@ -32,9 +32,16 @@ export class RescateInfoPage implements OnInit {
     this.route.paramMap.subscribe(paramMap => {
        this.id = paramMap.get('id');
     });
-
     this.myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(this.myArray);
+    if (this.arrayOfValues === null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
+    console.log(this.arrayOfValues[0].IdUnidad);
     this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
     this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
     this.falla1.nativeElement.value = this.arraysplit[0];
@@ -43,6 +50,18 @@ export class RescateInfoPage implements OnInit {
     this.falla4.nativeElement.value = this.arraysplit[3];
     this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
     this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+    } );
+    }else{
+      this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+      this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+      this.falla1.nativeElement.value = this.arraysplit[0];
+      this.falla2.nativeElement.value = this.arraysplit[1];
+      this.falla3.nativeElement.value = this.arraysplit[2];
+      this.falla4.nativeElement.value = this.arraysplit[3];
+      this.ubicacion.nativeElement.value = this.arrayOfValues[0].Direccion;
+      this.criticidad.nativeElement.value = this.arrayOfValues[0].NCriticidad;
+    }
+
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit() {

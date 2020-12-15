@@ -35,6 +35,14 @@ export class FormMecPage implements OnInit {
     });
     const myArray = this.route.snapshot.queryParamMap.get('myArray');
     this.arrayOfValues = JSON.parse(myArray);
+    if (this.arrayOfValues === null){
+      console.log('null: entonces busca:' + this.id);
+      this.dataService.getReportes(this.id)
+    .subscribe( data1 => {
+       // console.log(data1);
+    this.arrayOfValues = JSON.stringify(data1);
+    this.arrayOfValues = JSON.parse(this.arrayOfValues);
+    console.log(this.arrayOfValues[0].IdUnidad);
     this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
     this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
     this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
@@ -42,7 +50,19 @@ export class FormMecPage implements OnInit {
     this.falla2.nativeElement.value = this.arraysplit[1];
     this.falla3.nativeElement.value = this.arraysplit[2];
     this.falla4.nativeElement.value = this.arraysplit[3];
-    this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    // this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    } );
+    }else{
+      this.idcufus.nativeElement.value = this.arrayOfValues[0].Id;
+      this.idunidad.nativeElement.value = this.arrayOfValues[0].IdUnidad;
+      this.arraysplit = this.arrayOfValues[0].Fallas.split('-');
+      this.falla1.nativeElement.value = this.arraysplit[0];
+      this.falla2.nativeElement.value = this.arraysplit[1];
+      this.falla3.nativeElement.value = this.arraysplit[2];
+      this.falla4.nativeElement.value = this.arraysplit[3];
+      // this.estatus.nativeElement.value = this.arrayOfValues[0].Estatus;
+    }
+
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngAfterViewInit() {
