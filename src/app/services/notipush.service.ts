@@ -54,17 +54,18 @@ export class NotipushService {
       console.log(this.mensajes);
     }
 
-    contarNotificaciones(){
+    contarNotificaciones(): number{
       let tempCount = 0;
       if ( localStorage.getItem('Unread') ){
         for ( let i = 0; i < this.mensajes.length; i++ ) {
-          console.log(i);
+          console.log('Contando notificacion: ' + i);
           if (this.mensajes[i].additionalData.vista === false){
             tempCount++;
           }
         }
       }else{
         tempCount = 0;
+        localStorage.setItem('Unread', tempCount.toString() );
       }
       return tempCount;
     }
