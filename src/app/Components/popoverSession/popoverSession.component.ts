@@ -19,19 +19,19 @@ export class PopoverSessionComponent implements OnInit {
     console.log(this.usuario);
     console.log(this.perfil);
     if(this.perfil === "0"){
-      this.nombreperfil="Jefe de transportación";
+      this.nombreperfil ='Jefe de transportación';
     }
     if(this.perfil === "1"){
-      this.nombreperfil="Gerente de mantenimiento";
+      this.nombreperfil ='Gerente de mantenimiento';
     }
     if(this.perfil === "2"){
-      this.nombreperfil="Coordinador de recepción";
+      this.nombreperfil ='Coordinador de recepción';
     }
     if(this.perfil === "3"){
-      this.nombreperfil="Validación";
+      this.nombreperfil = 'Validación';
     }
-    if(this.perfil === "Rescate"){
-      this.nombreperfil="Jefe de transportación";
+    if(this.perfil === "4"){
+      this.nombreperfil = 'Rescatista';
     }
   }
 
